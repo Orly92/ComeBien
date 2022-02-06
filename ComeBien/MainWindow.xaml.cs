@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComeBien.DataAccess.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,26 @@ namespace ComeBien
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly IProductsRepository _productsRepository;
+        private CollectionViewSource productsViewSource;
         public MainWindow()
         {
             InitializeComponent();
+            productsViewSource =
+                (CollectionViewSource)FindResource(nameof(productsViewSource));
+
+            _productsRepository = new ProductsRepository();
+
+        }
+
+        private async void productsDataGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            await SetProducts();
+        }
+
+        private async Task SetProducts()
+        {
+            productsViewSource.Source = await _productsRepository.GetAll();
         }
     }
 }

@@ -6,7 +6,27 @@
         xmlns:local="clr-namespace:ComeBien"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <CollectionViewSource x:Key="productsViewSource"/>
+    </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
+        <DataGrid Grid.Column="2" x:Name="productsDataGrid" AutoGenerateColumns="False" 
+          EnableRowVirtualization="True" 
+          ItemsSource="{Binding Source={StaticResource productsViewSource}}" 
+          Margin="13,13,43,229" RowDetailsVisibilityMode="VisibleWhenSelected" Loaded="productsDataGrid_Loaded">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}"
+                            Header="Category Id" Width="SizeToHeader"
+                            IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding EsName}" Header="Name" 
+                            Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
     </Grid>
 </Window>
