@@ -44,6 +44,7 @@ namespace ComeBien
                 SetNotLoginView();
             }
 
+            MenuLanguage.Header = $"_{ConfigService.lang}";
         }
 
         private void MenuItem_LoginClick(object sender, RoutedEventArgs e)
@@ -81,6 +82,27 @@ namespace ComeBien
             ConfigService.isLogged = false;
             ConfigService.userName = "";
             MenuHello.Header = "_Hola!!!";
+        }
+
+        private void MenuSpain_Click(object sender, RoutedEventArgs e)
+        {
+            SetLanguage(Languages.Spanish);
+        }
+
+        private void MenuEnglish_Click(object sender, RoutedEventArgs e)
+        {
+            SetLanguage(Languages.English);
+        }
+
+        private void MenuFrance_Click(object sender, RoutedEventArgs e)
+        {
+            SetLanguage(Languages.France);
+        }
+
+        private void SetLanguage(string lang)
+        {
+            ConfigService.lang = lang;
+            MenuLanguage.Header = $"_{lang}";
         }
     }
 }

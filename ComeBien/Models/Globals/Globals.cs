@@ -13,8 +13,8 @@ namespace ComeBien.Models.Globals
 
     public class Languages
     {
-        public static string English { get; set; } = "EN";
-        public static string Spanish { get; set; } = "ES";
-        public static string France { get; set; } = "FR";
+        public const string English = "EN";
+        public const string Spanish = "ES";
+        public const string France = "FR";
     }
 }

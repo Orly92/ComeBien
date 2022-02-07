@@ -20,6 +20,7 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                         </Grid>
                     </ItemsPanelTemplate>
@@ -34,7 +35,18 @@
                     </MenuItem.Header>
                 </MenuItem>
                 <MenuItem x:Name="MenuOrder" Header="_Ordenes" IsEnabled="False" Grid.Column="1"/>
-                <MenuItem Height="50" Width="50" HorizontalAlignment="Right" Grid.Column="2">
+                
+                <MenuItem x:Name="MenuHello" HorizontalAlignment="Right" Header="_Hola!!!" Grid.Column="2">
+                    <MenuItem x:Name="MenuLogin" Header="_Login" Click="MenuItem_LoginClick"/>
+                    <MenuItem x:Name="MenuLogout" Header="_Logout" Click="MenuItem_LogoutClick" IsEnabled="False" />
+                </MenuItem>
+                <MenuItem x:Name="MenuLanguage" HorizontalAlignment="Right" Header="_ES"
+                          Grid.Column="3">
+                    <MenuItem x:Name="MenuSpain" Header="_Español" Click="MenuSpain_Click"/>
+                    <MenuItem x:Name="MenuEnglish" Header="_Inglés" Click="MenuEnglish_Click"/>
+                    <MenuItem x:Name="MenuFrance" Header="_Frances" Click="MenuFrance_Click"/>
+                </MenuItem>
+                <MenuItem Height="50" Width="50" HorizontalAlignment="Right" Grid.Column="4">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Image Width="40" Height="40" Source="../Resources/Images/shopping_cart.png" />
@@ -42,10 +54,7 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem x:Name="MenuHello" HorizontalAlignment="Right" Header="_Hola!!!" Grid.Column="3">
-                    <MenuItem x:Name="MenuLogin" Header="_Login" Click="MenuItem_LoginClick"/>
-                    <MenuItem x:Name="MenuLogout" Header="_Logout" Click="MenuItem_LogoutClick" IsEnabled="False" />
-                </MenuItem>
+                
             </Menu>
             <TextBox AcceptsReturn="True" />
         </DockPanel>
