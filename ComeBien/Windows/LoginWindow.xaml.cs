@@ -1,6 +1,7 @@
 ﻿using ComeBien.DataAccess.Repositories;
 using ComeBien.Models.Database;
 using ComeBien.Models.Globals;
+using ComeBien.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,8 +47,8 @@ namespace ComeBien.Windows
 
             if (admin != null)
             {
-                AdminInfo.IsLogged = true;
-                AdminInfo.UserName = admin.UserName;
+                ConfigService.isLogged = true;
+                ConfigService.userName = admin.UserName;
                 Close();
             }
             else

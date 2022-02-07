@@ -1,5 +1,6 @@
 ﻿using ComeBien.DataAccess.Repositories;
 using ComeBien.Models.Globals;
+using ComeBien.Services;
 using ComeBien.Windows;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,23 @@ namespace ComeBien
         public MainWindow()
         {
             InitializeComponent();
-            
+
+            InitializeConfigData();
+        }
+
+        private void InitializeConfigData()
+        {
+            ConfigService.Load();
+
+            if (ConfigService.isLogged)
+            {
+                SetLoginView();
+            }
+            else
+            {
+                SetNotLoginView();
+            }
+
         }
 
         private void MenuItem_LoginClick(object sender, RoutedEventArgs e)
@@ -34,26 +51,36 @@ namespace ComeBien
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.ShowDialog();
 
-            if (AdminInfo.IsLogged)
+            if (ConfigService.isLogged)
             {
-                MenuLogin.IsEnabled = false;
-                MenuLogout.IsEnabled = true;
-                MenuOrder.IsEnabled = true;
-                MenuHello.Header = $"_Hola {AdminInfo.UserName}";
+                SetLoginView();
             }
+        }
+
+        private void SetLoginView()
+        {
+            MenuLogin.IsEnabled = false;
+            MenuLogout.IsEnabled = true;
+            MenuOrder.IsEnabled = true;
+            MenuHello.Header = $"_Hola {ConfigService.userName}";
         }
 
         private void MenuItem_LogoutClick(object sender, RoutedEventArgs e)
         {
-            if (AdminInfo.IsLogged)
+            if (ConfigService.isLogged)
             {
-                MenuLogin.IsEnabled = true;
-                MenuLogout.IsEnabled = false;
-                MenuOrder.IsEnabled = false;
-                AdminInfo.IsLogged = false;
-                AdminInfo.UserName = "";
-                MenuHello.Header = "_Hola!!!";
+                SetNotLoginView();
             }
+        }
+
+        private void SetNotLoginView()
+        {
+            MenuLogin.IsEnabled = true;
+            MenuLogout.IsEnabled = false;
+            MenuOrder.IsEnabled = false;
+            ConfigService.isLogged = false;
+            ConfigService.userName = "";
+            MenuHello.Header = "_Hola!!!";
         }
     }
 }
