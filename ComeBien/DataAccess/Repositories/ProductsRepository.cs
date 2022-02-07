@@ -15,7 +15,7 @@ namespace ComeBien.DataAccess.Repositories
         }
     }
 
-    internal interface IProductsRepository : IBaseRepository<Products>
+    public interface IProductsRepository : IBaseRepository<Products>
     {
     }
 }

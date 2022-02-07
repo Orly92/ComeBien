@@ -15,7 +15,7 @@ namespace ComeBien.DataAccess.Repositories
         }
     }
 
-    internal interface IIngredientsRepository : IBaseRepository<Ingredients>
+    public interface IIngredientsRepository : IBaseRepository<Ingredients>
     {
     }
 }

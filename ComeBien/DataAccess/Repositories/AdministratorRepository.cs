@@ -25,7 +25,7 @@ namespace ComeBien.DataAccess.Repositories
         }
     }
 
-    internal interface IAdministratorRepository : IBaseRepository<Administrator>
+    public interface IAdministratorRepository : IBaseRepository<Administrator>
     {
         Task<Administrator> GetAdmin(string userName, string pass);
     }
