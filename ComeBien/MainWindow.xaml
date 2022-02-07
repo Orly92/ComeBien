@@ -10,23 +10,20 @@
         <CollectionViewSource x:Key="productsViewSource"/>
     </Window.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="160"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-
-        <DataGrid Grid.Column="2" x:Name="productsDataGrid" AutoGenerateColumns="False" 
-          EnableRowVirtualization="True" 
-          ItemsSource="{Binding Source={StaticResource productsViewSource}}" 
-          Margin="13,13,43,229" RowDetailsVisibilityMode="VisibleWhenSelected" Loaded="productsDataGrid_Loaded">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Id}"
-                            Header="Category Id" Width="SizeToHeader"
-                            IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding EsName}" Header="Name" 
-                            Width="*"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        
+        <DockPanel>
+            <Menu DockPanel.Dock="Top" Height="50">
+                <MenuItem Height="50" Width="130">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="40" Height="40" Source="Resources/Images/comeBien.jpg" />
+                            <Label Content="_Come Bien" VerticalAlignment="Center" BorderThickness="2,0" Foreground="#FF0096FF" >
+                            </Label>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Header="_Ordenes" IsEnabled="False" />
+            </Menu>
+            <TextBox AcceptsReturn="True" />
+        </DockPanel>
     </Grid>
 </Window>

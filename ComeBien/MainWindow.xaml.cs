@@ -26,9 +26,6 @@ namespace ComeBien
         public MainWindow()
         {
             InitializeComponent();
-            productsViewSource =
-                (CollectionViewSource)FindResource(nameof(productsViewSource));
-
             _productsRepository = new ProductsRepository();
 
         }
