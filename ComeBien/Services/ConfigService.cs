@@ -13,20 +13,6 @@ namespace ComeBien.Services
         public static string lang { get; set; }
         public static bool isLogged { get; set; }
         public static string userName { get; set; }
-        //private static ConfigService _instance;
-
-        //public ConfigService()
-        //{
-
-        //}
-
-        //public static ConfigService GetInstance()
-        //{
-        //    if (_instance == null)
-        //        _instance = new ConfigService();
-
-        //    return _instance;
-        //}
 
         public static void InitDefaults()
         {

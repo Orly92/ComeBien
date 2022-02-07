@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComeBien"
+        xmlns:resx="clr-namespace:ComeBien.Resources"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
@@ -35,10 +36,10 @@
                     </MenuItem.Header>
                 </MenuItem>
                 <MenuItem x:Name="MenuOrder" Header="_Ordenes" IsEnabled="False" Grid.Column="1"/>
-                
-                <MenuItem x:Name="MenuHello" HorizontalAlignment="Right" Header="_Hola!!!" Grid.Column="2">
-                    <MenuItem x:Name="MenuLogin" Header="_Login" Click="MenuItem_LoginClick"/>
-                    <MenuItem x:Name="MenuLogout" Header="_Logout" Click="MenuItem_LogoutClick" IsEnabled="False" />
+
+                <MenuItem x:Name="MenuHello" HorizontalAlignment="Right" Header="{x:Static resx:Resources.MenuSaludo}" Grid.Column="2">
+                    <MenuItem x:Name="MenuLogin" Header="{x:Static resx:Resources.MenuLogin}" Click="MenuItem_LoginClick"/>
+                    <MenuItem x:Name="MenuLogout" Header="{x:Static resx:Resources.MenuLogout}" Click="MenuItem_LogoutClick" IsEnabled="False" />
                 </MenuItem>
                 <MenuItem x:Name="MenuLanguage" HorizontalAlignment="Right" Header="_ES"
                           Grid.Column="3">

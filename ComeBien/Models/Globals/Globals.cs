@@ -16,5 +16,12 @@ namespace ComeBien.Models.Globals
         public const string English = "EN";
         public const string Spanish = "ES";
         public const string France = "FR";
+
+        public static Dictionary<string, string> LanguagesReference { get; set; } = new Dictionary<string, string>
+        {
+            { "EN","en_US" },
+            { "ES","es_ES" },
+            { "FR","fr_FR" },
+        };
     }
 }

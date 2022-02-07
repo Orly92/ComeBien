@@ -5,6 +5,7 @@ using ComeBien.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,6 +27,7 @@ namespace ComeBien
     {
         public MainWindow()
         {
+            
             InitializeComponent();
 
             InitializeConfigData();
@@ -33,8 +35,7 @@ namespace ComeBien
 
         private void InitializeConfigData()
         {
-            ConfigService.Load();
-
+            
             if (ConfigService.isLogged)
             {
                 SetLoginView();
@@ -45,6 +46,7 @@ namespace ComeBien
             }
 
             MenuLanguage.Header = $"_{ConfigService.lang}";
+
         }
 
         private void MenuItem_LoginClick(object sender, RoutedEventArgs e)
@@ -81,7 +83,8 @@ namespace ComeBien
             MenuOrder.IsEnabled = false;
             ConfigService.isLogged = false;
             ConfigService.userName = "";
-            MenuHello.Header = "_Hola!!!";
+            
+            MenuHello.Header = ComeBien.Resources.Resources.ResourceManager.GetString("MenuSaludo");
         }
 
         private void MenuSpain_Click(object sender, RoutedEventArgs e)
