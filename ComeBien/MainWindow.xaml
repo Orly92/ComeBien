@@ -12,7 +12,19 @@
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top" Height="50">
-                <MenuItem Height="50" Width="130">
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+                <MenuItem Height="50" Width="130" Grid.Column="0">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Image Width="40" Height="40" Source="Resources/Images/comeBien.jpg" />
@@ -21,7 +33,19 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem Header="_Ordenes" IsEnabled="False" />
+                <MenuItem Header="_Ordenes" IsEnabled="False" Grid.Column="1"/>
+                <MenuItem Height="50" Width="50" HorizontalAlignment="Right" Grid.Column="2">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="40" Height="40" Source="Resources/Images/shopping_cart.png" />
+                            
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem HorizontalAlignment="Right" Header="_Hola!!!" Grid.Column="3">
+                    <MenuItem Header="_Login" Click="MenuItem_LoginClick"/>
+                    <MenuItem Header="_Logout" Click="MenuItem_LogoutClick" IsEnabled="False" />
+                </MenuItem>
             </Menu>
             <TextBox AcceptsReturn="True" />
         </DockPanel>

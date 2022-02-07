@@ -39,5 +39,15 @@ namespace ComeBien
         {
             productsViewSource.Source = await _productsRepository.GetAll();
         }
+
+        private void MenuItem_LoginClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_LogoutClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

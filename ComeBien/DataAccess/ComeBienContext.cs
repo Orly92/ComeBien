@@ -25,6 +25,10 @@ namespace ComeBien.DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Administrator>(a => {
+                a.HasKey(x => x.UserName);
+            });
+
             modelBuilder.Entity<Products>().HasData(new Products
             {
                 Id = 1,
@@ -80,9 +84,17 @@ namespace ComeBien.DataAccess
                 EnName = "Onion",
                 Price = 1
             });
+
+            modelBuilder.Entity<Administrator>()
+                .HasData(new Administrator
+                {
+                    UserName = "admin",
+                    Password = "admin1234*"
+                });
         }
 
         public DbSet<Products> Products { get; set; }
         public DbSet<Ingredients> Ingredients { get; set; }
+        public DbSet<Administrator> Administrators { get; set; }
     }
 }
