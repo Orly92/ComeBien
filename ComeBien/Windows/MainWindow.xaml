@@ -27,24 +27,24 @@
                 <MenuItem Height="50" Width="130" Grid.Column="0">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Width="40" Height="40" Source="Resources/Images/comeBien.jpg" />
+                            <Image Width="40" Height="40" Source="../Resources/Images/comeBien.jpg" />
                             <Label Content="_Come Bien" VerticalAlignment="Center" BorderThickness="2,0" Foreground="#FF0096FF" >
                             </Label>
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem Header="_Ordenes" IsEnabled="False" Grid.Column="1"/>
+                <MenuItem x:Name="MenuOrder" Header="_Ordenes" IsEnabled="False" Grid.Column="1"/>
                 <MenuItem Height="50" Width="50" HorizontalAlignment="Right" Grid.Column="2">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Width="40" Height="40" Source="Resources/Images/shopping_cart.png" />
+                            <Image Width="40" Height="40" Source="../Resources/Images/shopping_cart.png" />
                             
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem HorizontalAlignment="Right" Header="_Hola!!!" Grid.Column="3">
-                    <MenuItem Header="_Login" Click="MenuItem_LoginClick"/>
-                    <MenuItem Header="_Logout" Click="MenuItem_LogoutClick" IsEnabled="False" />
+                <MenuItem x:Name="MenuHello" HorizontalAlignment="Right" Header="_Hola!!!" Grid.Column="3">
+                    <MenuItem x:Name="MenuLogin" Header="_Login" Click="MenuItem_LoginClick"/>
+                    <MenuItem x:Name="MenuLogout" Header="_Logout" Click="MenuItem_LogoutClick" IsEnabled="False" />
                 </MenuItem>
             </Menu>
             <TextBox AcceptsReturn="True" />

@@ -1,4 +1,5 @@
 ﻿using ComeBien.Models.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,16 +15,18 @@ namespace ComeBien.DataAccess.Repositories
 
         }
 
-        public bool IsAdmin(string userName, string pass)
+        public async Task<Administrator> GetAdmin(string userName, string pass)
         {
             using (var dbContext = new ComeBienContext())
             {
-                return dbContext.Administrators.Any(x => x.UserName == userName && x.Password == pass);
+                return await dbContext.Administrators.
+                    FirstOrDefaultAsync(x => x.UserName == userName && x.Password == pass);
             }
         }
     }
 
     internal interface IAdministratorRepository : IBaseRepository<Administrator>
     {
+        Task<Administrator> GetAdmin(string userName, string pass);
     }
 }

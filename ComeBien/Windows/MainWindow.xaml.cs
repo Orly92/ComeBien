@@ -1,4 +1,6 @@
 ﻿using ComeBien.DataAccess.Repositories;
+using ComeBien.Models.Globals;
+using ComeBien.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,33 +23,37 @@ namespace ComeBien
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly IProductsRepository _productsRepository;
-        private CollectionViewSource productsViewSource;
         public MainWindow()
         {
             InitializeComponent();
-            _productsRepository = new ProductsRepository();
-
-        }
-
-        private async void productsDataGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            await SetProducts();
-        }
-
-        private async Task SetProducts()
-        {
-            productsViewSource.Source = await _productsRepository.GetAll();
+            
         }
 
         private void MenuItem_LoginClick(object sender, RoutedEventArgs e)
         {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.ShowDialog();
 
+            if (AdminInfo.IsLogged)
+            {
+                MenuLogin.IsEnabled = false;
+                MenuLogout.IsEnabled = true;
+                MenuOrder.IsEnabled = true;
+                MenuHello.Header = $"_Hola {AdminInfo.UserName}";
+            }
         }
 
         private void MenuItem_LogoutClick(object sender, RoutedEventArgs e)
         {
-
+            if (AdminInfo.IsLogged)
+            {
+                MenuLogin.IsEnabled = true;
+                MenuLogout.IsEnabled = false;
+                MenuOrder.IsEnabled = false;
+                AdminInfo.IsLogged = false;
+                AdminInfo.UserName = "";
+                MenuHello.Header = "_Hola!!!";
+            }
         }
     }
 }
