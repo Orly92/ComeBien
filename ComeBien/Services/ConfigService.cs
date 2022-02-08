@@ -8,32 +8,54 @@ using System.Threading.Tasks;
 
 namespace ComeBien.Services
 {
-    public class ConfigService
+    public class ConfigService : IConfigService
     {
-        public static string lang { get; set; }
-        public static bool isLogged { get; set; }
-        public static string userName { get; set; }
-
-        public static void InitDefaults()
+        private string _lang;
+        public string Lang
         {
-            lang = Languages.Spanish;
-            isLogged = false;
-            userName = "";
+            get => _lang;
+            set => _lang = value;
         }
 
-        public static void Load()
+        private bool _isLogged;
+        public bool IsLogged
         {
-            lang = Read("lang");
-            userName = Read("userName");
-            isLogged = Read("isLogged") == "true";
+            get => _isLogged;
+            set => _isLogged = value;
         }
 
-        private static string Read(string key)
+        private string _userName;
+        public string UserName
+        {
+            get => _userName;
+            set => _userName = value;
+        }
+
+        public ConfigService()
+        {
+
+        }
+
+        public void InitDefaults()
+        {
+            _lang = Languages.Spanish;
+            _isLogged = false;
+            _userName = "";
+        }
+
+        public void Load()
+        {
+            _lang = Read("lang");
+            _userName = Read("userName");
+            _isLogged = Read("isLogged") == "true";
+        }
+
+        private string Read(string key)
         {
             return ConfigurationManager.AppSettings[key];
         }
 
-        private static void Write(Configuration configFile, string key, string value)
+        private void Write(Configuration configFile, string key, string value)
         {
             var setting = configFile.AppSettings.Settings;
 
@@ -47,16 +69,26 @@ namespace ComeBien.Services
             }
         }
 
-        public static void Save()
+        public void Save()
         {
             var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             
-            Write(configFile, "lang", lang);
-            Write(configFile, "isLogged", isLogged == true ? "true" : "false");
-            Write(configFile, "userName", userName);
+            Write(configFile, "lang", _lang);
+            Write(configFile, "isLogged", _isLogged == true ? "true" : "false");
+            Write(configFile, "userName", _userName);
             
             configFile.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
         }
+    }
+
+    public interface IConfigService
+    {
+        string Lang { get; set; }
+        string UserName { get; set; }
+        bool IsLogged { get; set; }
+        void Save();
+        void Load();
+        void InitDefaults();
     }
 }

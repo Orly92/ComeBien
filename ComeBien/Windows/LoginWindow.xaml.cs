@@ -24,13 +24,13 @@ namespace ComeBien.Windows
     public partial class LoginWindow : Window
     {
         private readonly IAdministratorRepository _administratorRepository;
+        private IConfigService _configService;
 
-        public LoginWindow()
+        public LoginWindow(IConfigService configService)
         {
-            InitializeComponent();
-
             _administratorRepository = new AdministratorRepository();
-
+            _configService = configService;
+            InitializeComponent();
         }
 
         private async void okButton_Click(object sender, RoutedEventArgs e)
@@ -47,8 +47,8 @@ namespace ComeBien.Windows
 
             if (admin != null)
             {
-                ConfigService.isLogged = true;
-                ConfigService.userName = admin.UserName;
+                _configService.IsLogged = true;
+                _configService.UserName = admin.UserName;
                 Close();
             }
             else

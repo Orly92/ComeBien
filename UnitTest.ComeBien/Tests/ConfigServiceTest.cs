@@ -12,36 +12,43 @@ namespace UnitTest.ComeBien.Tests
     [TestClass]
     public class ConfigServiceTest
     {
+        private IConfigService _configService;
+
+        public ConfigServiceTest()
+        {
+            _configService = new ConfigService();
+        }
+
         [TestMethod]
         public void SaveAndLoadValuesTest()
         {
-            ConfigService.Load();
-            bool originalIsLogged = ConfigService.isLogged;
-            string originalUserName = ConfigService.userName;
-            string originalLang = ConfigService.lang;
+            _configService.Load();
+            bool originalIsLogged = _configService.IsLogged;
+            string originalUserName = _configService.UserName;
+            string originalLang = _configService.Lang;
 
             bool actualIsLogged = false;
             string actualLang = Languages.France;
             string actualUserName = "prueba";
 
-            ConfigService.InitDefaults();
+            _configService.InitDefaults();
 
-            ConfigService.isLogged = actualIsLogged;
-            ConfigService.lang = actualLang;
-            ConfigService.userName = actualUserName;
+            _configService.IsLogged = actualIsLogged;
+            _configService.Lang = actualLang;
+            _configService.UserName = actualUserName;
 
-            ConfigService.Save();
-            ConfigService.InitDefaults();
-            ConfigService.Load();
+            _configService.Save();
+            _configService.InitDefaults();
+            _configService.Load();
 
-            Assert.AreEqual(ConfigService.isLogged,actualIsLogged);
-            Assert.AreEqual(ConfigService.userName, actualUserName);
-            Assert.AreEqual(ConfigService.lang, actualLang);
+            Assert.AreEqual(_configService.IsLogged, actualIsLogged);
+            Assert.AreEqual(_configService.UserName, actualUserName);
+            Assert.AreEqual(_configService.Lang, actualLang);
 
             //Restaurando valores
-            ConfigService.isLogged = originalIsLogged;
-            ConfigService.userName = originalUserName;
-            ConfigService.lang = originalLang;
+            _configService.IsLogged = originalIsLogged;
+            _configService.UserName = originalUserName;
+            _configService.Lang = originalLang;
         }
     }
 }

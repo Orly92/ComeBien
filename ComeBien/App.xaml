@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ComeBien"
              xmlns:resx="clr-namespace:ComeBien.Resources"
-             StartupUri="Windows/MainWindow.xaml"
              Exit="Application_Exit">
     <Application.Resources>
          

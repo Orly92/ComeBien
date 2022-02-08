@@ -2,6 +2,7 @@
 using ComeBien.Models.Globals;
 using ComeBien.Services;
 using ComeBien.Windows;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +26,12 @@ namespace ComeBien
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private IConfigService _configService;
+        public MainWindow(IConfigService configService, ServiceProvider serviceProvider)
         {
+            _configService = serviceProvider.GetService<IConfigService>();
             
+
             InitializeComponent();
 
             InitializeConfigData();
@@ -36,7 +40,7 @@ namespace ComeBien
         private void InitializeConfigData()
         {
             
-            if (ConfigService.isLogged)
+            if (_configService.IsLogged)
             {
                 SetLoginView();
             }
@@ -45,16 +49,16 @@ namespace ComeBien
                 SetNotLoginView();
             }
 
-            MenuLanguage.Header = $"_{ConfigService.lang}";
+            MenuLanguage.Header = $"_{_configService.Lang}";
 
         }
 
         private void MenuItem_LoginClick(object sender, RoutedEventArgs e)
         {
-            LoginWindow loginWindow = new LoginWindow();
+            LoginWindow loginWindow = new LoginWindow(_configService);
             loginWindow.ShowDialog();
 
-            if (ConfigService.isLogged)
+            if (_configService.IsLogged)
             {
                 SetLoginView();
             }
@@ -65,12 +69,12 @@ namespace ComeBien
             MenuLogin.IsEnabled = false;
             MenuLogout.IsEnabled = true;
             MenuOrder.IsEnabled = true;
-            MenuHello.Header = $"_Hola {ConfigService.userName}";
+            MenuHello.Header = $"_Hola {_configService.UserName}";
         }
 
         private void MenuItem_LogoutClick(object sender, RoutedEventArgs e)
         {
-            if (ConfigService.isLogged)
+            if (_configService.IsLogged)
             {
                 SetNotLoginView();
             }
@@ -81,8 +85,9 @@ namespace ComeBien
             MenuLogin.IsEnabled = true;
             MenuLogout.IsEnabled = false;
             MenuOrder.IsEnabled = false;
-            ConfigService.isLogged = false;
-            ConfigService.userName = "";
+
+            _configService.IsLogged = false;
+            _configService.UserName = "";
             
             MenuHello.Header = ComeBien.Resources.Resources.ResourceManager.GetString("MenuSaludo");
         }
@@ -104,7 +109,7 @@ namespace ComeBien
 
         private void SetLanguage(string lang)
         {
-            ConfigService.lang = lang;
+            _configService.Lang = lang;
             MenuLanguage.Header = $"_{lang}";
         }
     }
