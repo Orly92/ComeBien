@@ -135,4 +135,7 @@
   <data name="Ordenes" xml:space="preserve">
     <value>_Ordenes</value>
   </data>
+  <data name="Start_Log" xml:space="preserve">
+    <value>Aplicación iniciada</value>
+  </data>
 </root>

@@ -2,6 +2,7 @@
 using ComeBien.Models.Globals;
 using ComeBien.Services;
 using ComeBien.Windows;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,6 @@ namespace ComeBien
     {
         public MainWindow()
         {
-            
             InitializeComponent();
 
             InitializeConfigData();

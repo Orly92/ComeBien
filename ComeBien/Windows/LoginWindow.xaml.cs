@@ -40,21 +40,29 @@ namespace ComeBien.Windows
 
         private async Task LoginUser()
         {
-            string username = userNameTextBox.Text;
-            string pass = passTextBox.Text;
-
-            Administrator admin = await _administratorRepository.GetAdmin(username, pass);
-
-            if (admin != null)
+            try
             {
-                ConfigService.isLogged = true;
-                ConfigService.userName = admin.UserName;
-                Close();
+                string username = userNameTextBox.Text;
+                string pass = passTextBox.Text;
+
+                Administrator admin = await _administratorRepository.GetAdmin(username, pass);
+
+                if (admin != null)
+                {
+                    ConfigService.isLogged = true;
+                    ConfigService.userName = admin.UserName;
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Las credenciales son incorrectas",
+                        "Error!!!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Las credenciales son incorrectas",
-                    "Error!!!", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ha ocurrido un error",
+                        "Error!!!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
