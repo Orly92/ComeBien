@@ -120,6 +120,9 @@
   <data name="GetAdmin_Log" xml:space="preserve">
     <value>DB: Obteniendo datos de usuario</value>
   </data>
+  <data name="GlobalError_Log" xml:space="preserve">
+    <value>Acaba de ocurrir una excepción no controlada</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Loguearse</value>
   </data>

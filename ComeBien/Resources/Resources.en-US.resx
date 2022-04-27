@@ -120,6 +120,9 @@
   <data name="GetAdmin_Log" xml:space="preserve">
     <value>DB: Getting user data</value>
   </data>
+  <data name="GlobalError_Log" xml:space="preserve">
+    <value>An unhandled exception just occurred</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>

@@ -120,6 +120,9 @@
   <data name="GetAdmin_Log" xml:space="preserve">
     <value>DB: Obtenir des données utilisateur</value>
   </data>
+  <data name="GlobalError_Log" xml:space="preserve">
+    <value>Une exception non gérée vient de se produire</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Connexion</value>
   </data>

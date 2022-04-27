@@ -42,5 +42,12 @@ namespace ComeBien
         {
             ConfigService.Save();
         }
+
+        private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            Log.Error(e.Exception, "Error");
+            MessageBox.Show($"{ComeBien.Resources.Resources.ResourceManager.GetString("GlobalError_Log")}: " + e.Exception.Message, "Exception Sample", MessageBoxButton.OK, MessageBoxImage.Warning);
+            e.Handled = true;
+        }
     }
 }
