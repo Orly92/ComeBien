@@ -2,6 +2,7 @@
 using ComeBien.Models.Database;
 using ComeBien.Models.Globals;
 using ComeBien.Services;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,20 +50,24 @@ namespace ComeBien.Windows
 
                 if (admin != null)
                 {
+                    Log.Information($"{ComeBien.Resources.Resources.ResourceManager.GetString("UserLogin_Log")}: {username}");
                     ConfigService.isLogged = true;
                     ConfigService.userName = admin.UserName;
                     Close();
                 }
                 else
                 {
+                    Log.Information(ComeBien.Resources.Resources.ResourceManager.GetString("UserFailLogin_Log"));
                     MessageBox.Show("Las credenciales son incorrectas",
                         "Error!!!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (Exception ex)
             {
+                Log.Error(ex, ComeBien.Resources.Resources.ResourceManager.GetString("GetAdmin_Log"));
                 MessageBox.Show("Ha ocurrido un error",
                         "Error!!!", MessageBoxButton.OK, MessageBoxImage.Error);
+
             }
         }
 

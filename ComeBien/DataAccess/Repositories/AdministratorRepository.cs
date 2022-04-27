@@ -1,5 +1,6 @@
 ﻿using ComeBien.Models.Database;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace ComeBien.DataAccess.Repositories
 
         public async Task<Administrator> GetAdmin(string userName, string pass)
         {
+            Log.Information(ComeBien.Resources.Resources.ResourceManager.GetString("GetAdmin_Log"));
+
             using (var dbContext = new ComeBienContext())
             {
                 return await dbContext.Administrators.
