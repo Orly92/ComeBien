@@ -104,8 +104,11 @@ namespace ComeBien
 
         private void SetLanguage(string lang)
         {
+            Log.Information($"{ComeBien.Resources.Resources.ResourceManager.GetString("SetLanguage")} => {lang}");
+
             ConfigService.lang = lang;
             MenuLanguage.Header = $"_{lang}";
+
         }
     }
 }

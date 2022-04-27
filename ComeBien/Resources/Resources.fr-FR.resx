@@ -138,6 +138,9 @@
   <data name="Ordenes" xml:space="preserve">
     <value>_Ordres</value>
   </data>
+  <data name="SetLanguage" xml:space="preserve">
+    <value>changement de langue</value>
+  </data>
   <data name="Start_Log" xml:space="preserve">
     <value>l'application a commencé</value>
   </data>
