@@ -19,7 +19,7 @@ namespace ComeBien.DataAccess
             DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                "Server=localhost;Database=comeBien;User Id=comeBien;Password=comeBien;");
+                "Server=localhost;Database=comeBien;User Id=comeBien;Password=comeBien*;");
 
         }
 
