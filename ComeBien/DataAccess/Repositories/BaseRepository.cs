@@ -14,7 +14,7 @@ namespace ComeBien.DataAccess.Repositories
 
         }
 
-        public virtual async Task<IEnumerable<T>> GetAll()
+        public virtual async Task<IList<T>> GetAll()
         {
             using (var dbContext = new ComeBienContext())
             {
@@ -46,7 +46,7 @@ namespace ComeBien.DataAccess.Repositories
 
     public interface IBaseRepository<T> where T : class
     {
-        Task<IEnumerable<T>> GetAll();
+        Task<IList<T>> GetAll();
         Task<T> Add(T entity);
         Task Delete(T entity);
     }

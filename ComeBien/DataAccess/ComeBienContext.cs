@@ -36,6 +36,8 @@ namespace ComeBien.DataAccess
                 EsDescription = "Construye tu propia pizza",
                 EnName = "Pizza",
                 EnDescription = "Build your own pizza",
+                FrName = "Pizza",
+                FrDescription = "Construisez votre propre pizza",
                 Price = 6
             }, new Products
             {
@@ -44,6 +46,8 @@ namespace ComeBien.DataAccess
                 EsDescription = "Construye tu propia hamburguesa",
                 EnName = "Burger",
                 EnDescription = "Build your own burger",
+                FrName = "Burger",
+                FrDescription = "Construisez votre propre hamburger",
                 Price = 4
             });
 
@@ -52,36 +56,42 @@ namespace ComeBien.DataAccess
                 Id = 1,
                 EsName = "Queso",
                 EnName = "Cheese",
+                FrName = "Fromage",
                 Price = 1
             }, new Ingredients
             {
                 Id = 2,
                 EsName = "Jamón",
                 EnName = "Jam",
+                FrName = "Jambon",
                 Price = 1
             }, new Ingredients
             {
                 Id = 3,
                 EsName = "Bacon",
                 EnName = "Bacon",
+                FrName = "Bacon",
                 Price = 1
             }, new Ingredients
             {
                 Id = 4,
                 EsName = "Chorizo",
                 EnName = "Chorizo",
+                FrName = "Saucisse",
                 Price = 1
             }, new Ingredients
             {
                 Id = 5,
                 EsName = "Piña",
                 EnName = "Pineapple",
+                FrName = "Ananas",
                 Price = 1
             }, new Ingredients
             {
                 Id = 6,
                 EsName = "Cebolla",
                 EnName = "Onion",
+                FrName = "Oignon",
                 Price = 1
             });
 
