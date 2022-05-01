@@ -5,19 +5,76 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ComeBien.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid x:Name="grdStudent"  Height="500" Width="550" Margin="22,56,22,115">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <Label Content="Student Id" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="57,51,0,0"/>
-        <Label Content="Student Name: " HorizontalAlignment="Left" Margin="57,110,0,0" VerticalAlignment="Top" Width="84"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="46,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="46,110,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="175"/>
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid Margin="50">
+        <StackPanel Orientation="Vertical">
+            <GroupBox Header="Ingredient Form" Margin="10" Height="176" Width="534">
+            <Grid Height="150">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Name" HorizontalAlignment="Left" 
+                       VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="0"/>
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="TextBoxName" Height="27" 
+                       Text="{Binding Path=SelectedIngredient.EsName, Mode=TwoWay}"  Margin="5"  Width="300" HorizontalAlignment="Left"/>
+                <Label Content="Age" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                       Grid.Row="1" Grid.Column="0"/>
+                <TextBox Grid.Row="1" Grid.Column="1" x:Name="TextBoxAge" Height="27" 
+                       Text="{Binding Path=SelectedIngredient.Price, Mode=TwoWay}" Margin="5" Width="70" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="TextBlockId" 
+                       Visibility="Hidden" Text="{Binding Path=SelectedIngredient.Id, Mode=TwoWay}"/>
+                <Label Content="Address" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                       Grid.Row="2" Grid.Column="0" />
+                <TextBox Grid.Row="2" Grid.Column="1" x:Name="TextBoxAddress" Height="27" 
+                       Text="{Binding Path=SelectedIngredient.EnName, Mode=TwoWay}" Margin="5" Width="300" HorizontalAlignment="Left"/>
+                <Label Content="Contact" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                       Grid.Row="3" Grid.Column="0" />
+                <TextBox Grid.Row="3" Grid.Column="1" x:Name="TextBoxContact" Height="27"
+                       Text="{Binding Path=SelectedIngredient.EnName, Mode=TwoWay}" Margin="5" Width="300" HorizontalAlignment="Left"/>
+            </Grid>
+        </GroupBox>
+        <StackPanel Height="40" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="ButtonSave_Copy" Content="Save" Height="30" Width="80"
+                Command="{Binding SaveCommand}"/>
+        </StackPanel>
+            <StackPanel Height="210">
+                <DataGrid x:Name="DataGridStudents" AutoGenerateColumns="False"
+                      ItemsSource="{Binding IngredientsCollection}" CanUserAddRows="False" Height="129" Margin="10">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Id}" Visibility="Hidden"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Path=EsName}" Width="100"  IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Age" Binding="{Binding Path=Price}" Width="50"  IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Address" Binding="{Binding Path=EnName}" Width="180" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Contact" Binding="{Binding Path=EnName}" Width="125" IsReadOnly="True"/>
+                        <DataGridTemplateColumn Width="50">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Select" x:Name="ButtonEdit" CommandParameter="{Binding Path=Id}"
+                                        Command="{Binding Path=DataContext.EditCommand,RelativeSource={RelativeSource FindAncestor,
+                                                AncestorType=Window}}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="50">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Delete" x:Name="ButtonDelete" CommandParameter="{Binding Path=Id}"
+                                        Command="{Binding Path=DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor,
+                                                AncestorType=Window}}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
     </Grid>
+    
 </UserControl>

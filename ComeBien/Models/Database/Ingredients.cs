@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComeBien.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ComeBien.Models.Database
 {
-    public class Ingredients
+    public class Ingredients : NotificationClass
     {
         [Key]
         public int Id { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComeBien.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace ComeBien.UserControls
         public IngredientsControl()
         {
             InitializeComponent();
+
+            this.DataContext = new IngredientsVM();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace ComeBien.DataAccess.Repositories
 
         }
 
-        public virtual async Task<IReadOnlyCollection<T>> GetAll()
+        public virtual async Task<IEnumerable<T>> GetAll()
         {
             using (var dbContext = new ComeBienContext())
             {
@@ -33,11 +33,21 @@ namespace ComeBien.DataAccess.Repositories
                 return entity;
             }
         }
+
+        public virtual async Task Delete(T entity)
+        {
+            using (var dbContext = new ComeBienContext())
+            {
+                dbContext.Remove(entity);
+                await dbContext.SaveChangesAsync();
+            }
+        }
     }
 
     public interface IBaseRepository<T> where T : class
     {
-        Task<IReadOnlyCollection<T>> GetAll();
+        Task<IEnumerable<T>> GetAll();
         Task<T> Add(T entity);
+        Task Delete(T entity);
     }
 }
