@@ -42,6 +42,26 @@ namespace ComeBien.DataAccess.Repositories
                 await dbContext.SaveChangesAsync();
             }
         }
+
+        public virtual async Task<T> Update(T entity)
+        {
+            using (var dbContext = new ComeBienContext())
+            {
+                dbContext.Entry(entity).State = EntityState.Modified;
+                await dbContext.SaveChangesAsync();
+
+                return entity;
+            }
+        }
+
+        public virtual async Task<T> FindById(int id)
+        {
+            using (var dbContext = new ComeBienContext())
+            {
+                DbSet<T> dbSet = dbContext.Set<T>();
+                return await dbSet.FindAsync(id);
+            }
+        }
     }
 
     public interface IBaseRepository<T> where T : class
@@ -49,5 +69,7 @@ namespace ComeBien.DataAccess.Repositories
         Task<IList<T>> GetAll();
         Task<T> Add(T entity);
         Task Delete(T entity);
+        Task<T> Update(T entity);
+        Task<T> FindById(int id);
     }
 }

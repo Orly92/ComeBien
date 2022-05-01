@@ -10,14 +10,14 @@ namespace ComeBien.ViewModel
     public class RelayCommand : ICommand
 	{
 		private readonly Action<object> _execute;
-		private readonly Predicate<object> _canExecute;
+		private readonly bool _canExecute;
 
 		public RelayCommand(Action<object> execute)
-			: this(execute, null)
+			: this(execute, true)
 		{
 		}
 
-		public RelayCommand(Action<object> execute, Predicate<object> canExecute)
+		public RelayCommand(Action<object> execute, bool canExecute)
 		{
 			if (execute == null)
 				throw new ArgumentNullException("execute");
@@ -27,7 +27,7 @@ namespace ComeBien.ViewModel
 
 		public bool CanExecute(object parameter)
 		{
-			return _canExecute == null ? true : _canExecute(parameter);
+			return _canExecute;
 		}
 
 		public event EventHandler CanExecuteChanged

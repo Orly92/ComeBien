@@ -14,13 +14,16 @@ namespace ComeBien.ViewModel
     public class IngredientsVM : NotificationClass
     {
         private readonly IIngredientsRepository _ingredientsRepository;
-        public EventHandler ShowMessageBox = delegate { };
         private ICommand _saveCommand;
-        private ICommand _editCommand;
         private ICommand _deleteCommand;
+        private ICommand _selectCommand;
+        private ICommand _resetCommand;
+        private ObservableCollection<Ingredients> ingredientsCollection;
+        private Ingredients _ingredient;
         public IngredientsVM()
         {
             _ingredientsRepository = new IngredientsRepository();
+            _ingredient = new Ingredients();
             InitializeCollection();
         }
 
@@ -30,16 +33,13 @@ namespace ComeBien.ViewModel
             IngredientsCollection = new ObservableCollection<Ingredients>(ingredients);
         }
 
-        private ObservableCollection<Ingredients> ingredientsCollection;
-        private Ingredients _ingredient;
-
         public ObservableCollection<Ingredients> IngredientsCollection
         {
             get { return ingredientsCollection; }
             set
             {
                 ingredientsCollection = value;
-                OnPropertyChanged();
+                OnPropertyChanged("IngredientsCollection");
             }
         }
 
@@ -52,29 +52,40 @@ namespace ComeBien.ViewModel
             set
             {
                 _ingredient = value;
-                OnPropertyChanged();
+                OnPropertyChanged("SelectedIngredient");
             }
         }
 
+        public ICommand ResetCommand
+        {
+            get
+            {
+                if (_resetCommand == null)
+                    _resetCommand = new RelayCommand(param => ResetData(), true);
+
+                return _resetCommand;
+            }
+        }
         public ICommand SaveCommand
         {
             get
             {
                 if (_saveCommand == null)
-                    _saveCommand = new RelayCommand(param => SaveData(), null);
+                    _saveCommand = new RelayCommand(async param => await SaveData(), true);
 
                 return _saveCommand;
             }
         }
 
-        public ICommand EditCommand
+        public ICommand SelectCommand
         {
             get
             {
-                if (_editCommand == null)
-                    _editCommand = new RelayCommand(param => EditData((int)param), null);
+                if (_selectCommand == null)
+                   // _selectCommand = new RelayCommand(async param => await Select((int)param), true);
+                    _selectCommand = new RelayCommand(param => Select((int)param), true);
 
-                return _editCommand;
+                return _selectCommand;
             }
         }
 
@@ -83,7 +94,7 @@ namespace ComeBien.ViewModel
             get
             {
                 if (_deleteCommand == null)
-                    _deleteCommand = new RelayCommand(async param => await DeleteStudent((int)param), null);
+                    _deleteCommand = new RelayCommand(async param => await DeleteStudent((int)param), true);
 
                 return _deleteCommand;
             }
@@ -110,50 +121,48 @@ namespace ComeBien.ViewModel
             }
         }
 
-        public void SaveData()
+        public async Task SaveData()
         {
-            //if (StudentRecord != null)
-            //{
-            //    _studentEntity.Name = StudentRecord.Name;
-            //    _studentEntity.Age = StudentRecord.Age;
-            //    _studentEntity.Address = StudentRecord.Address;
-            //    _studentEntity.Contact = StudentRecord.Contact;
+            if (SelectedIngredient != null)
+            {
+                _ingredient.EsName = SelectedIngredient.EsName;
+                _ingredient.FrName = SelectedIngredient.FrName;
+                _ingredient.EnName = SelectedIngredient.EnName;
+                _ingredient.Price = SelectedIngredient.Price;
 
-            //    try
-            //    {
-            //        if (StudentRecord.Id <= 0)
-            //        {
-            //            _repository.AddStudent(_studentEntity);
-            //            MessageBox.Show("New record successfully saved.");
-            //        }
-            //        else
-            //        {
-            //            _studentEntity.ID = StudentRecord.Id;
-            //            _repository.UpdateStudent(_studentEntity);
-            //            MessageBox.Show("Record successfully updated.");
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show("Error occured while saving. " + ex.InnerException);
-            //    }
-            //    finally
-            //    {
-            //        GetAll();
-            //        ResetData();
-            //    }
-            //}
+                try
+                {
+                    if (SelectedIngredient.Id <= 0)
+                    {
+                        await _ingredientsRepository.Add(_ingredient);
+                        MessageBox.Show("New record successfully saved.");
+                    }
+                    else
+                    {
+                        _ingredient.Id = SelectedIngredient.Id;
+                        await _ingredientsRepository.Update(_ingredient);
+                        MessageBox.Show("Record successfully updated.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occured while saving. " + ex.InnerException);
+                }
+                finally
+                {
+                    await InitializeCollection();
+                }
+            }
         }
 
-        public void EditData(int id)
-        {
-            //var model = _repository.Get(id);
-            //StudentRecord.Id = model.ID;
-            //StudentRecord.Name = model.Name;
-            //StudentRecord.Age = (int)model.Age;
-            //StudentRecord.Address = model.Address;
-            //StudentRecord.Contact = model.Contact;
-        }
 
+        public async void Select(int id)
+        {
+            SelectedIngredient = await _ingredientsRepository.FindById(id);
+        }
+        public void ResetData()
+        {
+            SelectedIngredient = new Ingredients();
+        }
     }
 }

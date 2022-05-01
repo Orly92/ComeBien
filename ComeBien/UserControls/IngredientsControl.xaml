@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ComeBien.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
-    <Grid Margin="50">
+    <Grid x:Name="IngredientsGrid" Margin="50">
         <StackPanel Orientation="Vertical">
             <GroupBox Header="Ingredient Form" Margin="10" Height="176" Width="534">
             <Grid Height="150">
@@ -41,24 +41,25 @@
             </Grid>
         </GroupBox>
         <StackPanel Height="40" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button x:Name="ButtonSave_Copy" Content="Save" Height="30" Width="80"
-                Command="{Binding SaveCommand}"/>
-        </StackPanel>
+                <Button x:Name="ButtonSave" Content="Save" Height="30" Width="80"
+                    Command="{Binding SaveCommand}"/>
+                <Button x:Name="ButtonCancel" Content="Cancel" Height="30" Width="80" 
+                    Command="{Binding ResetCommand}" Margin="5,0,10,0"/>
+            </StackPanel>
             <StackPanel Height="210">
-                <DataGrid x:Name="DataGridStudents" AutoGenerateColumns="False"
+                <DataGrid x:Name="DataGridIngredients" AutoGenerateColumns="False"
                       ItemsSource="{Binding IngredientsCollection}" CanUserAddRows="False" Height="129" Margin="10">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Path=Id}" Visibility="Hidden"/>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Path=EsName}" Width="100"  IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Age" Binding="{Binding Path=Price}" Width="50"  IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Address" Binding="{Binding Path=EnName}" Width="180" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Contact" Binding="{Binding Path=EnName}" Width="125" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" Visibility="Hidden"/>
+                        <DataGridTextColumn Header="Spanish Name" Binding="{Binding Path=EsName}" Width="200"  IsReadOnly="True"/>
+                        <DataGridTextColumn Header="English Name" Binding="{Binding Path=EnName}" Width="200" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="French Name" Binding="{Binding Path=FrName}" Width="200" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Price" Binding="{Binding Path=Price}" Width="50"  IsReadOnly="True"/>
                         <DataGridTemplateColumn Width="50">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="Select" x:Name="ButtonEdit" CommandParameter="{Binding Path=Id}"
-                                        Command="{Binding Path=DataContext.EditCommand,RelativeSource={RelativeSource FindAncestor,
-                                                AncestorType=Window}}"/>
+                                    <Button Content="Select" x:Name="ButtonSelect" CommandParameter="{Binding Path=Id}"
+                                        Command="{Binding Path=DataContext.SelectCommand,ElementName=IngredientsGrid}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -66,8 +67,7 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Content="Delete" x:Name="ButtonDelete" CommandParameter="{Binding Path=Id}"
-                                        Command="{Binding Path=DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor,
-                                                AncestorType=Window}}"/>
+                                        Command="{Binding Path=DataContext.DeleteCommand,ElementName=IngredientsGrid}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
