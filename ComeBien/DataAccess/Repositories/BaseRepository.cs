@@ -22,10 +22,22 @@ namespace ComeBien.DataAccess.Repositories
                 return await dbSet.ToListAsync();
             }
         }
+
+        public virtual async Task<T> Add(T entity)
+        {
+            using (var dbContext = new ComeBienContext())
+            {
+                await dbContext.AddAsync(entity);
+                await dbContext.SaveChangesAsync();
+
+                return entity;
+            }
+        }
     }
 
     public interface IBaseRepository<T> where T : class
     {
         Task<IReadOnlyCollection<T>> GetAll();
+        Task<T> Add(T entity);
     }
 }

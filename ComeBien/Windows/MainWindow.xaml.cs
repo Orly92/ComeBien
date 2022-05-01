@@ -1,6 +1,7 @@
 ﻿using ComeBien.DataAccess.Repositories;
 using ComeBien.Models.Globals;
 using ComeBien.Services;
+using ComeBien.UserControls;
 using ComeBien.Windows;
 using Serilog;
 using System;
@@ -26,11 +27,14 @@ namespace ComeBien
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly FrameworkElement _ingredientsControl;
         public MainWindow()
         {
             InitializeComponent();
 
             InitializeConfigData();
+
+            _ingredientsControl = new IngredientsControl();
         }
 
         private void InitializeConfigData()
@@ -46,7 +50,6 @@ namespace ComeBien
             }
 
             MenuLanguage.Header = $"_{ConfigService.lang}";
-
         }
 
         private void MenuItem_LoginClick(object sender, RoutedEventArgs e)
@@ -65,7 +68,8 @@ namespace ComeBien
             MenuLogin.IsEnabled = false;
             MenuLogout.IsEnabled = true;
             MenuOrder.IsEnabled = true;
-            MenuHello.Header = $"_Hola {ConfigService.userName}";
+            MenuIngredients.IsEnabled = true;
+            MenuHello.Header = $"{ConfigService.userName}";
         }
 
         private void MenuItem_LogoutClick(object sender, RoutedEventArgs e)
@@ -109,6 +113,11 @@ namespace ComeBien
             ConfigService.lang = lang;
             MenuLanguage.Header = $"_{lang}";
 
+        }
+
+        private void MenuIngredients_Click(object sender, RoutedEventArgs e)
+        {
+            content.Content = _ingredientsControl;
         }
     }
 }

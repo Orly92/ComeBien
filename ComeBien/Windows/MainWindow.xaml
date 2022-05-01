@@ -19,6 +19,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
@@ -36,18 +37,19 @@
                     </MenuItem.Header>
                 </MenuItem>
                 <MenuItem x:Name="MenuOrder" Header="_Ordenes" IsEnabled="False" Grid.Column="1"/>
+                <MenuItem x:Name="MenuIngredients" Header="_Ingredientes" IsEnabled="False" Grid.Column="2" Click="MenuIngredients_Click"/>
 
-                <MenuItem x:Name="MenuHello" HorizontalAlignment="Right" Header="{x:Static resx:Resources.MenuSaludo}" Grid.Column="2">
+                <MenuItem x:Name="MenuHello" HorizontalAlignment="Right" Header="{x:Static resx:Resources.MenuSaludo}" Grid.Column="3">
                     <MenuItem x:Name="MenuLogin" Header="{x:Static resx:Resources.MenuLogin}" Click="MenuItem_LoginClick"/>
                     <MenuItem x:Name="MenuLogout" Header="{x:Static resx:Resources.MenuLogout}" Click="MenuItem_LogoutClick" IsEnabled="False" />
                 </MenuItem>
                 <MenuItem x:Name="MenuLanguage" HorizontalAlignment="Right" Header="_ES"
-                          Grid.Column="3">
+                          Grid.Column="4">
                     <MenuItem x:Name="MenuSpain" Header="_Español" Click="MenuSpain_Click"/>
                     <MenuItem x:Name="MenuEnglish" Header="_Inglés" Click="MenuEnglish_Click"/>
                     <MenuItem x:Name="MenuFrance" Header="_Frances" Click="MenuFrance_Click"/>
                 </MenuItem>
-                <MenuItem Height="50" Width="50" HorizontalAlignment="Right" Grid.Column="4">
+                <MenuItem Height="50" Width="50" HorizontalAlignment="Right" Grid.Column="5">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Image Width="40" Height="40" Source="../Resources/Images/shopping_cart.png" />
@@ -59,5 +61,6 @@
             </Menu>
             <TextBox AcceptsReturn="True" />
         </DockPanel>
+        <ContentControl x:Name="content" />
     </Grid>
 </Window>
