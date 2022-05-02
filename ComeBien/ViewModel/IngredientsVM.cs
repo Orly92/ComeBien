@@ -115,7 +115,8 @@ namespace ComeBien.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"{ComeBien.Resources.Resources.ResourceManager.GetString("ErrorSaving")}. {ex.InnerException}");
+                    MessageBox.Show($"{ComeBien.Resources.Resources.ResourceManager.GetString("ErrorSaving")}. {ex.InnerException}",
+                        "", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 finally
                 {
@@ -126,7 +127,12 @@ namespace ComeBien.ViewModel
 
         public async Task SaveData()
         {
-            if (SelectedIngredient != null)
+            if (SelectedIngredient != null 
+                && !string.IsNullOrEmpty(SelectedIngredient.FrName)
+                && !string.IsNullOrEmpty(SelectedIngredient.EsName)
+                && !string.IsNullOrEmpty(SelectedIngredient.EnName)
+                && SelectedIngredient.Price > 0
+                )
             {
                 _ingredient.EsName = SelectedIngredient.EsName;
                 _ingredient.FrName = SelectedIngredient.FrName;
@@ -149,12 +155,18 @@ namespace ComeBien.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"{ComeBien.Resources.Resources.ResourceManager.GetString("ErrorSaving")}. {ex.InnerException}");
+                    MessageBox.Show($"{ComeBien.Resources.Resources.ResourceManager.GetString("ErrorSaving")}. {ex.InnerException}",
+                        "",MessageBoxButton.OK,MessageBoxImage.Error);
                 }
                 finally
                 {
                     await InitializeCollection();
                 }
+            }
+            else
+            {
+                MessageBox.Show($"{ComeBien.Resources.Resources.ResourceManager.GetString("InvalidData")}",
+                    "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

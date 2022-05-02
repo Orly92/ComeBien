@@ -147,6 +147,9 @@
   <data name="Ingredient" xml:space="preserve">
     <value>Ingrédient</value>
   </data>
+  <data name="InvalidData" xml:space="preserve">
+    <value>Les données sont invalides. Bien remplir le formulaire</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Connexion</value>
   </data>
