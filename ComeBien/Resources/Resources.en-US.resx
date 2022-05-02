@@ -117,11 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Confirm delete of this record?</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="EnName" xml:space="preserve">
+    <value>English name</value>
+  </data>
+  <data name="ErrorSaving" xml:space="preserve">
+    <value>Error occured while saving</value>
+  </data>
+  <data name="EsName" xml:space="preserve">
+    <value>Spanish name</value>
+  </data>
+  <data name="FrName" xml:space="preserve">
+    <value>French name</value>
+  </data>
   <data name="GetAdmin_Log" xml:space="preserve">
     <value>DB: Getting user data</value>
   </data>
   <data name="GlobalError_Log" xml:space="preserve">
     <value>An unhandled exception just occurred</value>
+  </data>
+  <data name="Ingredient" xml:space="preserve">
+    <value>Ingredient</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
@@ -141,11 +165,29 @@
   <data name="Ordenes" xml:space="preserve">
     <value>_Orders</value>
   </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
   <data name="SetLanguage" xml:space="preserve">
     <value>change of language</value>
   </data>
   <data name="Start_Log" xml:space="preserve">
     <value>Application started</value>
+  </data>
+  <data name="SuccessAdd" xml:space="preserve">
+    <value>New record successfully saved</value>
+  </data>
+  <data name="SuccessDelete" xml:space="preserve">
+    <value>Record deleted successfully</value>
+  </data>
+  <data name="SuccessUpdate" xml:space="preserve">
+    <value>Record successfully updated</value>
   </data>
   <data name="UserFailLogin_Log" xml:space="preserve">
     <value>Login failed</value>

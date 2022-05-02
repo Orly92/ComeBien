@@ -117,6 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>ConfirmDelete</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="EnName" xml:space="preserve">
+    <value>Nombre en Ingles</value>
+  </data>
+  <data name="ErrorSaving" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EsName" xml:space="preserve">
+    <value>Nombre en Español</value>
+  </data>
+  <data name="FrName" xml:space="preserve">
+    <value>Nombre en Francés</value>
+  </data>
+  <data name="Ingredient" xml:space="preserve">
+    <value>Ingrediente</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Loguearse</value>
   </data>
@@ -134,5 +158,23 @@
   </data>
   <data name="Ordenes" xml:space="preserve">
     <value>_Ordenes</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>precio</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Sauver</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Sélectionner</value>
+  </data>
+  <data name="SuccessAdd" xml:space="preserve">
+    <value>New record successfully saved</value>
+  </data>
+  <data name="SuccessDelete" xml:space="preserve">
+    <value>Successfully deleted</value>
+  </data>
+  <data name="SuccessUpdate" xml:space="preserve">
+    <value>Record successfully updated</value>
   </data>
 </root>

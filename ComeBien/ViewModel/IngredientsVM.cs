@@ -102,17 +102,20 @@ namespace ComeBien.ViewModel
 
         public async Task DeleteStudent(int id)
         {
-            if (MessageBox.Show("Confirm delete of this record?", "Student", MessageBoxButton.YesNo)
+            if (MessageBox.Show(
+                ComeBien.Resources.Resources.ResourceManager.GetString("ConfirmDelete"),
+                ComeBien.Resources.Resources.ResourceManager.GetString("Ingredient")
+                , MessageBoxButton.YesNo)
                 == MessageBoxResult.Yes)
             {
                 try
                 {
                     await _ingredientsRepository.Delete(id);
-                    MessageBox.Show("Record successfully deleted.");
+                    MessageBox.Show(ComeBien.Resources.Resources.ResourceManager.GetString("SuccessDelete"));
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error occured while saving. " + ex.InnerException);
+                    MessageBox.Show($"{ComeBien.Resources.Resources.ResourceManager.GetString("ErrorSaving")}. {ex.InnerException}");
                 }
                 finally
                 {
@@ -135,18 +138,18 @@ namespace ComeBien.ViewModel
                     if (SelectedIngredient.Id <= 0)
                     {
                         await _ingredientsRepository.Add(_ingredient);
-                        MessageBox.Show("New record successfully saved.");
+                        MessageBox.Show(ComeBien.Resources.Resources.ResourceManager.GetString("SuccessAdd"));
                     }
                     else
                     {
                         _ingredient.Id = SelectedIngredient.Id;
                         await _ingredientsRepository.Update(_ingredient);
-                        MessageBox.Show("Record successfully updated.");
+                        MessageBox.Show(ComeBien.Resources.Resources.ResourceManager.GetString("SuccessUpdate"));
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error occured while saving. " + ex.InnerException);
+                    MessageBox.Show($"{ComeBien.Resources.Resources.ResourceManager.GetString("ErrorSaving")}. {ex.InnerException}");
                 }
                 finally
                 {

@@ -85,6 +85,7 @@ namespace ComeBien
             MenuLogin.IsEnabled = true;
             MenuLogout.IsEnabled = false;
             MenuOrder.IsEnabled = false;
+            MenuIngredients.IsEnabled = false;
             ConfigService.isLogged = false;
             ConfigService.userName = "";
             

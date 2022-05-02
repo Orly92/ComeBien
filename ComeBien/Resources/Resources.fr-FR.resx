@@ -117,11 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Voulez-vous vraiment supprimer cet enregistrement ?</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="EnName" xml:space="preserve">
+    <value>Nom en anglais</value>
+  </data>
+  <data name="ErrorSaving" xml:space="preserve">
+    <value>Une erreur s'est produite lors de l'enregistrement</value>
+  </data>
+  <data name="EsName" xml:space="preserve">
+    <value>Nom en espagnol</value>
+  </data>
+  <data name="FrName" xml:space="preserve">
+    <value>Nom en français</value>
+  </data>
   <data name="GetAdmin_Log" xml:space="preserve">
     <value>DB: Obtenir des données utilisateur</value>
   </data>
   <data name="GlobalError_Log" xml:space="preserve">
     <value>Une exception non gérée vient de se produire</value>
+  </data>
+  <data name="Ingredient" xml:space="preserve">
+    <value>Ingrédient</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Connexion</value>
@@ -141,11 +165,29 @@
   <data name="Ordenes" xml:space="preserve">
     <value>_Ordres</value>
   </data>
+  <data name="Price" xml:space="preserve">
+    <value>Le prix</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Sauver</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Sélectionner</value>
+  </data>
   <data name="SetLanguage" xml:space="preserve">
     <value>changement de langue</value>
   </data>
   <data name="Start_Log" xml:space="preserve">
     <value>l'application a commencé</value>
+  </data>
+  <data name="SuccessAdd" xml:space="preserve">
+    <value>Nouvel enregistrement enregistré avec succès</value>
+  </data>
+  <data name="SuccessDelete" xml:space="preserve">
+    <value>Enregistrement supprimé avec succès</value>
+  </data>
+  <data name="SuccessUpdate" xml:space="preserve">
+    <value>Enregistrement mis à jour avec succès</value>
   </data>
   <data name="UserFailLogin_Log" xml:space="preserve">
     <value>échec de la connexion</value>
