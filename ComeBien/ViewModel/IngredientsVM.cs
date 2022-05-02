@@ -1,5 +1,6 @@
 ﻿using ComeBien.DataAccess.Repositories;
 using ComeBien.Models.Database;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -82,9 +83,8 @@ namespace ComeBien.ViewModel
             get
             {
                 if (_selectCommand == null)
-                   // _selectCommand = new RelayCommand(async param => await Select((int)param), true);
-                    _selectCommand = new RelayCommand(param => Select((int)param), true);
-
+                    _selectCommand = new RelayCommand(async param => await Select((int)param), true);
+                
                 return _selectCommand;
             }
         }
@@ -108,13 +108,16 @@ namespace ComeBien.ViewModel
                 , MessageBoxButton.YesNo)
                 == MessageBoxResult.Yes)
             {
+                Log.Information($"Intento de borrado del ingrediente {id}");
                 try
                 {
                     await _ingredientsRepository.Delete(id);
+                    Log.Information($"Borrado satisfactoriamente el ingrediente {id}");
                     MessageBox.Show(ComeBien.Resources.Resources.ResourceManager.GetString("SuccessDelete"));
                 }
                 catch (Exception ex)
                 {
+                    Log.Error($"Error borrando el ingrediente {id}",ex);
                     MessageBox.Show($"{ComeBien.Resources.Resources.ResourceManager.GetString("ErrorSaving")}. {ex.InnerException}",
                         "", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
@@ -143,11 +146,14 @@ namespace ComeBien.ViewModel
                 {
                     if (SelectedIngredient.Id <= 0)
                     {
+                        Log.Information($"Creando un nuevo ingrediente, de nombre => {SelectedIngredient.EsName}");
                         await _ingredientsRepository.Add(_ingredient);
                         MessageBox.Show(ComeBien.Resources.Resources.ResourceManager.GetString("SuccessAdd"));
                     }
                     else
                     {
+                        Log.Information($"Actualizando el ingrediente, de nombre = {SelectedIngredient.EsName} y id = {SelectedIngredient.Id}");
+
                         _ingredient.Id = SelectedIngredient.Id;
                         await _ingredientsRepository.Update(_ingredient);
                         MessageBox.Show(ComeBien.Resources.Resources.ResourceManager.GetString("SuccessUpdate"));
@@ -155,6 +161,7 @@ namespace ComeBien.ViewModel
                 }
                 catch (Exception ex)
                 {
+                    Log.Error("Error salvando el ingrediente", ex);
                     MessageBox.Show($"{ComeBien.Resources.Resources.ResourceManager.GetString("ErrorSaving")}. {ex.InnerException}",
                         "",MessageBoxButton.OK,MessageBoxImage.Error);
                 }
@@ -171,8 +178,9 @@ namespace ComeBien.ViewModel
         }
 
 
-        public async void Select(int id)
+        public async Task Select(int id)
         {
+            Log.Information($"Ingrediente {id} seleccionado");
             SelectedIngredient = await _ingredientsRepository.FindById(id);
         }
         public void ResetData()
