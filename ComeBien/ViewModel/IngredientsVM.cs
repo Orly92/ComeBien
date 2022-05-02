@@ -173,7 +173,7 @@ namespace ComeBien.ViewModel
             else
             {
                 MessageBox.Show($"{ComeBien.Resources.Resources.ResourceManager.GetString("InvalidData")}",
-                    "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    "", MessageBoxButton.OK);
             }
         }
 

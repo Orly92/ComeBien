@@ -67,7 +67,6 @@ namespace ComeBien
         {
             MenuLogin.IsEnabled = false;
             MenuLogout.IsEnabled = true;
-            MenuOrder.IsEnabled = true;
             MenuIngredients.IsEnabled = true;
             MenuHello.Header = $"{ConfigService.userName}";
         }
@@ -84,7 +83,6 @@ namespace ComeBien
         {
             MenuLogin.IsEnabled = true;
             MenuLogout.IsEnabled = false;
-            MenuOrder.IsEnabled = false;
             MenuIngredients.IsEnabled = false;
             ConfigService.isLogged = false;
             ConfigService.userName = "";
@@ -109,7 +107,7 @@ namespace ComeBien
 
         private void SetLanguage(string lang)
         {
-            Log.Information($"{ComeBien.Resources.Resources.ResourceManager.GetString("SetLanguage")} => {lang}");
+            Log.Information($"Lenguaje cambiado a {lang}");
 
             ConfigService.lang = lang;
             MenuLanguage.Header = $"_{lang}";

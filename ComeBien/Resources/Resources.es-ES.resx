@@ -126,6 +126,9 @@
   <data name="Delete" xml:space="preserve">
     <value>Borrar</value>
   </data>
+  <data name="English" xml:space="preserve">
+    <value>_Inglés</value>
+  </data>
   <data name="EnName" xml:space="preserve">
     <value>Nombre en Ingles</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="EsName" xml:space="preserve">
     <value>Nombre en Español</value>
+  </data>
+  <data name="French" xml:space="preserve">
+    <value>_Francés</value>
   </data>
   <data name="FrName" xml:space="preserve">
     <value>Nombre en Francés</value>
@@ -146,6 +152,9 @@
   </data>
   <data name="Ingredient" xml:space="preserve">
     <value>Ingrediente</value>
+  </data>
+  <data name="Ingredients" xml:space="preserve">
+    <value>_Ingredientes</value>
   </data>
   <data name="InvalidData" xml:space="preserve">
     <value>Los datos son invalidos. Rellene bien el formulario</value>
@@ -168,6 +177,9 @@
   <data name="Ordenes" xml:space="preserve">
     <value>_Ordenes</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>Precio</value>
   </data>
@@ -179,6 +191,9 @@
   </data>
   <data name="SetLanguage" xml:space="preserve">
     <value>Cambio de idioma</value>
+  </data>
+  <data name="Spanish" xml:space="preserve">
+    <value>_Español</value>
   </data>
   <data name="Start_Log" xml:space="preserve">
     <value>Aplicación iniciada</value>
@@ -197,5 +212,8 @@
   </data>
   <data name="UserLogin_Log" xml:space="preserve">
     <value>Usuario logueado</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Usuario</value>
   </data>
 </root>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ComeBien"
         xmlns:resx="clr-namespace:ComeBien.Resources"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="ComeBien" Height="600" Width="800">
     <Window.Resources>
         <CollectionViewSource x:Key="productsViewSource"/>
     </Window.Resources>
@@ -36,8 +36,7 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem x:Name="MenuOrder" Header="_Ordenes" IsEnabled="False" Grid.Column="1"/>
-                <MenuItem x:Name="MenuIngredients" Header="_Ingredientes" IsEnabled="False" Grid.Column="2" Click="MenuIngredients_Click"/>
+                <MenuItem x:Name="MenuIngredients" Header="{x:Static resx:Resources.Ingredients}" IsEnabled="False" Grid.Column="2" Click="MenuIngredients_Click"/>
 
                 <MenuItem x:Name="MenuHello" HorizontalAlignment="Right" Header="{x:Static resx:Resources.MenuSaludo}" Grid.Column="3">
                     <MenuItem x:Name="MenuLogin" Header="{x:Static resx:Resources.MenuLogin}" Click="MenuItem_LoginClick"/>
@@ -45,9 +44,9 @@
                 </MenuItem>
                 <MenuItem x:Name="MenuLanguage" HorizontalAlignment="Right" Header="_ES"
                           Grid.Column="4">
-                    <MenuItem x:Name="MenuSpain" Header="_Español" Click="MenuSpain_Click"/>
-                    <MenuItem x:Name="MenuEnglish" Header="_Inglés" Click="MenuEnglish_Click"/>
-                    <MenuItem x:Name="MenuFrance" Header="_Frances" Click="MenuFrance_Click"/>
+                    <MenuItem x:Name="MenuSpain" Header="{x:Static resx:Resources.Spanish}" Click="MenuSpain_Click"/>
+                    <MenuItem x:Name="MenuEnglish" Header="{x:Static resx:Resources.English}" Click="MenuEnglish_Click"/>
+                    <MenuItem x:Name="MenuFrance" Header="{x:Static resx:Resources.French}" Click="MenuFrance_Click"/>
                 </MenuItem>
                 <MenuItem Height="50" Width="50" HorizontalAlignment="Right" Grid.Column="5">
                     <MenuItem.Header>

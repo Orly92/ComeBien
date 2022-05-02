@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComeBien.Windows"
+        xmlns:resx="clr-namespace:ComeBien.Resources"
         mc:Ignorable="d"
-        Title="Login" Height="170" Width="400">
+        Title="{x:Static resx:Resources.Login}" Height="170" Width="400">
     <Grid>
         
         <Grid.ColumnDefinitions>
@@ -23,14 +24,14 @@
         </Grid.RowDefinitions>
 
         <!-- Left,Top,Right,Bottom margins-->
-        <Label Grid.Column="0" Grid.Row="0">UserName:</Label>
+        <Label Grid.Column="0" Grid.Row="0" Content="{x:Static resx:Resources.UserName}"></Label>
         <TextBox Name="userNameTextBox" Grid.Column="1" Grid.Row="0" />
 
-        <Label Grid.Column="0" Grid.Row="2">Contraseña:</Label>
+        <Label Grid.Column="0" Grid.Row="2" Content="{x:Static resx:Resources.Password}"></Label>
         <TextBox Name="passTextBox" Grid.Column="1" Grid.Row="2"/>
 
         <!-- Accept or Cancel -->
-        <Button Grid.Column="1" Grid.Row="4" Width="70" Name="okButton" Click="okButton_Click" IsDefault="True" HorizontalAlignment="Right">OK</Button>
-        <Button Grid.Column="0" Grid.Row="4" Name="cancelButton" Click="cancelButton_Click" IsCancel="True">Cancel</Button>
+        <Button Grid.Column="1" Grid.Row="4" Width="70" Name="okButton" Click="okButton_Click" IsDefault="True" HorizontalAlignment="Right" Content="{x:Static resx:Resources.Login}"></Button>
+        <Button Grid.Column="0" Grid.Row="4" Name="cancelButton" Click="cancelButton_Click" IsCancel="True" Content="{x:Static resx:Resources.Cancel}"></Button>
     </Grid>
 </Window>

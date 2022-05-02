@@ -118,28 +118,46 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Cancel" xml:space="preserve">
-    <value>Annuler</value>
+    <value>Cancelar</value>
   </data>
   <data name="ConfirmDelete" xml:space="preserve">
-    <value>ConfirmDelete</value>
+    <value>¿Está seguro que quiere eliminar este registro?</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Supprimer</value>
+    <value>Borrar</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>_Inglés</value>
   </data>
   <data name="EnName" xml:space="preserve">
     <value>Nombre en Ingles</value>
   </data>
   <data name="ErrorSaving" xml:space="preserve">
-    <value />
+    <value>Error ocurrido mientras se salvaba</value>
   </data>
   <data name="EsName" xml:space="preserve">
     <value>Nombre en Español</value>
   </data>
+  <data name="French" xml:space="preserve">
+    <value>_Francés</value>
+  </data>
   <data name="FrName" xml:space="preserve">
     <value>Nombre en Francés</value>
   </data>
+  <data name="GetAdmin_Log" xml:space="preserve">
+    <value>DB: Obteniendo datos de usuario</value>
+  </data>
+  <data name="GlobalError_Log" xml:space="preserve">
+    <value>Acaba de ocurrir una excepción no controlada</value>
+  </data>
   <data name="Ingredient" xml:space="preserve">
     <value>Ingrediente</value>
+  </data>
+  <data name="Ingredients" xml:space="preserve">
+    <value>_Ingredientes</value>
+  </data>
+  <data name="InvalidData" xml:space="preserve">
+    <value>Los datos son invalidos. Rellene bien el formulario</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Loguearse</value>
@@ -159,22 +177,43 @@
   <data name="Ordenes" xml:space="preserve">
     <value>_Ordenes</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
   <data name="Price" xml:space="preserve">
-    <value>precio</value>
+    <value>Precio</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Sauver</value>
+    <value>Salvar</value>
   </data>
   <data name="Select" xml:space="preserve">
-    <value>Sélectionner</value>
+    <value>Seleccionar</value>
+  </data>
+  <data name="SetLanguage" xml:space="preserve">
+    <value>Cambio de idioma</value>
+  </data>
+  <data name="Spanish" xml:space="preserve">
+    <value>_Español</value>
+  </data>
+  <data name="Start_Log" xml:space="preserve">
+    <value>Aplicación iniciada</value>
   </data>
   <data name="SuccessAdd" xml:space="preserve">
-    <value>New record successfully saved</value>
+    <value>Nuevo registro guardado con éxito</value>
   </data>
   <data name="SuccessDelete" xml:space="preserve">
-    <value>Successfully deleted</value>
+    <value>Registro eliminado con éxito</value>
   </data>
   <data name="SuccessUpdate" xml:space="preserve">
-    <value>Record successfully updated</value>
+    <value>Registro actualizado con éxito</value>
+  </data>
+  <data name="UserFailLogin_Log" xml:space="preserve">
+    <value>Login fallido</value>
+  </data>
+  <data name="UserLogin_Log" xml:space="preserve">
+    <value>Usuario logueado</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Usuario</value>
   </data>
 </root>

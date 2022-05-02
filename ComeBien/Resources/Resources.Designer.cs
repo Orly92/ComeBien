@@ -61,7 +61,7 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Annuler.
+        ///   Looks up a localized string similar to Cancelar.
         /// </summary>
         public static string Cancel {
             get {
@@ -70,7 +70,7 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ConfirmDelete.
+        ///   Looks up a localized string similar to ¿Está seguro que quiere eliminar este registro?.
         /// </summary>
         public static string ConfirmDelete {
             get {
@@ -79,11 +79,20 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Supprimer.
+        ///   Looks up a localized string similar to Borrar.
         /// </summary>
         public static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Inglés.
+        /// </summary>
+        public static string English {
+            get {
+                return ResourceManager.GetString("English", resourceCulture);
             }
         }
         
@@ -97,7 +106,7 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Error ocurrido mientras se salvaba.
         /// </summary>
         public static string ErrorSaving {
             get {
@@ -115,6 +124,15 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Francés.
+        /// </summary>
+        public static string French {
+            get {
+                return ResourceManager.GetString("French", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nombre en Francés.
         /// </summary>
         public static string FrName {
@@ -124,11 +142,47 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DB: Obteniendo datos de usuario.
+        /// </summary>
+        public static string GetAdmin_Log {
+            get {
+                return ResourceManager.GetString("GetAdmin_Log", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Acaba de ocurrir una excepción no controlada.
+        /// </summary>
+        public static string GlobalError_Log {
+            get {
+                return ResourceManager.GetString("GlobalError_Log", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ingrediente.
         /// </summary>
         public static string Ingredient {
             get {
                 return ResourceManager.GetString("Ingredient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Ingredientes.
+        /// </summary>
+        public static string Ingredients {
+            get {
+                return ResourceManager.GetString("Ingredients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Los datos son invalidos. Rellene bien el formulario.
+        /// </summary>
+        public static string InvalidData {
+            get {
+                return ResourceManager.GetString("InvalidData", resourceCulture);
             }
         }
         
@@ -187,7 +241,16 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to precio.
+        ///   Looks up a localized string similar to Contraseña.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Precio.
         /// </summary>
         public static string Price {
             get {
@@ -196,7 +259,7 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sauver.
+        ///   Looks up a localized string similar to Salvar.
         /// </summary>
         public static string Save {
             get {
@@ -205,7 +268,7 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sélectionner.
+        ///   Looks up a localized string similar to Seleccionar.
         /// </summary>
         public static string Select {
             get {
@@ -214,7 +277,34 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New record successfully saved.
+        ///   Looks up a localized string similar to Cambio de idioma.
+        /// </summary>
+        public static string SetLanguage {
+            get {
+                return ResourceManager.GetString("SetLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Español.
+        /// </summary>
+        public static string Spanish {
+            get {
+                return ResourceManager.GetString("Spanish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aplicación iniciada.
+        /// </summary>
+        public static string Start_Log {
+            get {
+                return ResourceManager.GetString("Start_Log", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nuevo registro guardado con éxito.
         /// </summary>
         public static string SuccessAdd {
             get {
@@ -223,7 +313,7 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Successfully deleted.
+        ///   Looks up a localized string similar to Registro eliminado con éxito.
         /// </summary>
         public static string SuccessDelete {
             get {
@@ -232,11 +322,38 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Record successfully updated.
+        ///   Looks up a localized string similar to Registro actualizado con éxito.
         /// </summary>
         public static string SuccessUpdate {
             get {
                 return ResourceManager.GetString("SuccessUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login fallido.
+        /// </summary>
+        public static string UserFailLogin_Log {
+            get {
+                return ResourceManager.GetString("UserFailLogin_Log", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usuario logueado.
+        /// </summary>
+        public static string UserLogin_Log {
+            get {
+                return ResourceManager.GetString("UserLogin_Log", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usuario.
+        /// </summary>
+        public static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
             }
         }
     }
