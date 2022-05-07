@@ -29,6 +29,11 @@ namespace ComeBien.DataAccess
                 a.HasKey(x => x.UserName);
             });
 
+            modelBuilder.Entity<OrderProductIngredients>(oi =>
+            {
+                oi.HasKey(x => new {x.OrderId,x.ProductId,x.IngredientId});
+            });
+
             modelBuilder.Entity<Products>().HasData(new Products
             {
                 Id = 1,
@@ -106,5 +111,8 @@ namespace ComeBien.DataAccess
         public DbSet<Products> Products { get; set; }
         public DbSet<Ingredients> Ingredients { get; set; }
         public DbSet<Administrator> Administrators { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderProducts> OrderProducts { get; set; }
+        public DbSet<OrderProductIngredients> OrderProductIngredients { get; set; }
     }
 }
