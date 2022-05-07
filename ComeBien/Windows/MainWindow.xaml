@@ -30,7 +30,7 @@
                 <MenuItem Height="50" Width="130" Grid.Column="0">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Width="40" Height="40" Source="../Resources/Images/comeBien.jpg" />
+                            <Image Width="40" Height="40" Source="../Resources/Images/Restaurant.ico" />
                             <Label Content="_Come Bien" VerticalAlignment="Center" BorderThickness="2,0" Foreground="#FF0096FF" >
                             </Label>
                         </StackPanel>
@@ -60,6 +60,6 @@
             </Menu>
             <TextBox AcceptsReturn="True" />
         </DockPanel>
-        <ContentControl x:Name="content" />
+        <ContentControl x:Name="content" Content="" Margin="0,51,0,0" />
     </Grid>
 </Window>
