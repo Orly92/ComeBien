@@ -28,6 +28,9 @@ namespace ComeBien
     public partial class MainWindow : Window
     {
         private readonly FrameworkElement _ingredientsControl;
+        private readonly FrameworkElement _salesProductControl;
+        private readonly Brush _activeColor;
+        private readonly Brush _blackColor;
         public MainWindow()
         {
             InitializeComponent();
@@ -35,6 +38,9 @@ namespace ComeBien
             InitializeConfigData();
 
             _ingredientsControl = new IngredientsControl();
+            _salesProductControl = new SalesProductControl();
+            _activeColor = (Brush)(new BrushConverter().ConvertFrom("#FF0096FF"));
+            _blackColor = new SolidColorBrush(Colors.Black);
         }
 
         private void InitializeConfigData()
@@ -116,7 +122,30 @@ namespace ComeBien
 
         private void MenuIngredients_Click(object sender, RoutedEventArgs e)
         {
-            content.Content = _ingredientsControl;
+            SetMenuColor(MenuEnum.Ingredients);
+        }
+
+        private void SetMenuColor(MenuEnum menu)
+        {
+            switch (menu)
+            {
+                case MenuEnum.Ingredients:
+                    MenuHome.Foreground = _blackColor;
+                    MenuIngredients.Foreground = _activeColor;
+                    content.Content = _ingredientsControl;
+                    break;
+
+                default:
+                    MenuHome.Foreground = _activeColor;
+                    MenuIngredients.Foreground = _blackColor;
+                    content.Content = _salesProductControl;
+                    break;
+            }
+        }
+
+        private void MenuHomeItem_Click(object sender, RoutedEventArgs e)
+        {
+            SetMenuColor(MenuEnum.Home);
         }
     }
 }

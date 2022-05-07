@@ -24,4 +24,10 @@ namespace ComeBien.Models.Globals
             { "FR","fr_FR" },
         };
     }
+
+    public enum MenuEnum
+    {
+        Home,
+        Ingredients
+    }
 }
