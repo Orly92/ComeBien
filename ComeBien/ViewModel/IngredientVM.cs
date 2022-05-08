@@ -6,11 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ComeBien.ViewModel
 {
-    internal class IngredientVM
+    internal class IngredientVM : NotificationClass
     {
+        private ICommand _addCommand;
+        private ICommand _removeCommand;
         public IngredientVM()
         {
 
@@ -38,5 +41,48 @@ namespace ComeBien.ViewModel
         public string Name { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
+
+        public ICommand AddCommand
+        {
+            get
+            {
+                if (_addCommand == null)
+                    _addCommand = new RelayCommand(param => AddIng(), true);
+
+                return _addCommand;
+            }
+        }
+
+        public ICommand RemoveCommand
+        {
+            get
+            {
+                if (_removeCommand == null)
+                    _removeCommand = new RelayCommand(param => RemIng(), true);
+
+                return _removeCommand;
+            }
+        }
+
+        private void AddIng()
+        {
+            Quantity += 1;
+            OnPropertyChanged("Quantity");
+        }
+
+        private void RemIng()
+        {
+            if (Quantity > 0)
+            {
+                Quantity -= 1;
+                OnPropertyChanged("Quantity");
+            }
+        }
+
+        public void ResetQuantity()
+        {
+            Quantity = 0;
+            OnPropertyChanged("Quantity");
+        }
     }
 }
