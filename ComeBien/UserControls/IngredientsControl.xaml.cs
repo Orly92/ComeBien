@@ -25,7 +25,7 @@ namespace ComeBien.UserControls
         {
             InitializeComponent();
 
-            this.DataContext = new IngredientsVM();
+            this.DataContext = new CRUDIngredientsVM();
         }
     }
 }

@@ -41,6 +41,8 @@ namespace ComeBien
             _salesProductControl = new SalesProductControl();
             _activeColor = (Brush)(new BrushConverter().ConvertFrom("#FF0096FF"));
             _blackColor = new SolidColorBrush(Colors.Black);
+
+            SetMenuColor(MenuEnum.Home);
         }
 
         private void InitializeConfigData()

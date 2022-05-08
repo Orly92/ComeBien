@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace ComeBien.ViewModel
 {
-    public class IngredientsVM : NotificationClass
+    public class CRUDIngredientsVM : NotificationClass
     {
         private readonly IIngredientsRepository _ingredientsRepository;
         private ICommand _saveCommand;
@@ -21,7 +21,7 @@ namespace ComeBien.ViewModel
         private ICommand _resetCommand;
         private ObservableCollection<Ingredients> ingredientsCollection;
         private Ingredients _ingredient;
-        public IngredientsVM()
+        public CRUDIngredientsVM()
         {
             _ingredientsRepository = new IngredientsRepository();
             _ingredient = new Ingredients();

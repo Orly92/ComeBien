@@ -6,7 +6,29 @@
              xmlns:local="clr-namespace:ComeBien.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid x:Name="SalesProductGrid" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="320"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Column="0">
+            <ItemsControl x:Name="ProductItemControl" ItemsSource="{Binding ProductsCollection}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="{Binding Name}" Grid.Row="0" />
+                            <TextBlock Text="{Binding Desc}" Grid.Row="1" />
+                            <TextBlock Text="{Binding Price}" Grid.Row="2" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>  
     </Grid>
 </UserControl>

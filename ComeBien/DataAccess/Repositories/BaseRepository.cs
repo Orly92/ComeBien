@@ -62,11 +62,21 @@ namespace ComeBien.DataAccess.Repositories
                 return await dbSet.FindAsync(id);
             }
         }
+
+        public virtual IList<T> GetAllSync()
+        {
+            using (var dbContext = new ComeBienContext())
+            {
+                DbSet<T> dbSet = dbContext.Set<T>();
+                return dbSet.ToList();
+            }
+        }
     }
 
     public interface IBaseRepository<T> where T : class
     {
         Task<IList<T>> GetAll();
+        IList<T> GetAllSync();
         Task<T> Add(T entity);
         Task Delete(T entity);
         Task<T> Update(T entity);
