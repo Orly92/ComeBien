@@ -2,6 +2,7 @@
 using ComeBien.Models.Globals;
 using ComeBien.Services;
 using ComeBien.UserControls;
+using ComeBien.ViewModel;
 using ComeBien.Windows;
 using Serilog;
 using System;
@@ -41,6 +42,7 @@ namespace ComeBien
             _salesProductControl = new SalesProductControl();
             _activeColor = (Brush)(new BrushConverter().ConvertFrom("#FF0096FF"));
             _blackColor = new SolidColorBrush(Colors.Black);
+            ShoppingCartMenu.DataContext = ShoppingCartService.GetInstance().ShoppingCartMenuVM;
 
             SetMenuColor(MenuEnum.Home);
         }

@@ -1,4 +1,5 @@
 ﻿using ComeBien.Models.Core;
+using ComeBien.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,13 @@ namespace ComeBien.Services
     {
         public ShoppingCartService()
         {
-
+            ShoppingCart = new ShoppingCart();
+            ShoppingCartMenuVM = new ShoppingCartMenuVM();
         }
 
         private static ShoppingCartService _instance;
         private ShoppingCart _shoppingCart;
+        private ShoppingCartMenuVM _shoppingCartMenuVM;
 
         public static ShoppingCartService GetInstance()
         {
@@ -35,13 +38,25 @@ namespace ComeBien.Services
             }
         }
 
+        public ShoppingCartMenuVM ShoppingCartMenuVM
+        {
+            get { return _shoppingCartMenuVM; }
+            set
+            {
+                _shoppingCartMenuVM = value;
+            }
+        }
+
         public void AddProduct(ShoppingCartProduct cartProduct)
         {
-            if(ShoppingCart == null)
-                ShoppingCart = new ShoppingCart();
-
             ShoppingCart.Products.Add(cartProduct);
             ShoppingCart.TotalAmount += cartProduct.Price;
+            ShoppingCartMenuVM.EditShoppingCart();
+        }
+
+        public int CountProduct()
+        {
+            return ShoppingCart.Products.Count;
         }
 
     }

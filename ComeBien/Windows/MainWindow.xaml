@@ -48,11 +48,12 @@
                     <MenuItem x:Name="MenuEnglish" Header="{x:Static resx:Resources.English}" Click="MenuEnglish_Click"/>
                     <MenuItem x:Name="MenuFrance" Header="{x:Static resx:Resources.French}" Click="MenuFrance_Click"/>
                 </MenuItem>
-                <MenuItem Height="50" Width="50" HorizontalAlignment="Right" Grid.Column="5">
+                <MenuItem x:Name="ShoppingCartMenu" HorizontalAlignment="Right" Grid.Column="5">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Image Width="40" Height="40" Source="../Resources/Images/shopping_cart.png" />
-                            
+                            <Label Content="{Binding ShoppingCartCount}" VerticalAlignment="Center" BorderThickness="2,0" >
+                            </Label>
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
