@@ -16,15 +16,18 @@
             <ItemsControl x:Name="ProductItemControl" ItemsSource="{Binding ProductsCollection}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
+                        <Grid Margin="10">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="300"></RowDefinition>
                                 <RowDefinition Height="*"></RowDefinition>
                                 <RowDefinition Height="*"></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock Text="{Binding Name}" Grid.Row="0" />
-                            <TextBlock Text="{Binding Desc}" Grid.Row="1" />
-                            <TextBlock Text="{Binding Price}" Grid.Row="2" />
+                            <TextBlock Text="{Binding Desc}" Grid.Row="0" />
+                            <Image Width="300" Height="280" 
+                                   Source="{Binding Image}" Grid.Row="1" />
+                            <TextBlock Text="{Binding PriceStr}" Grid.Row="2"></TextBlock>
+                            <Button Grid.Row="3">Añadir</Button>
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

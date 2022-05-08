@@ -15,6 +15,8 @@ namespace ComeBien.ViewModel
         public string Name { get; set; }
         public string Desc { get; set; }
         public decimal Price { get; set; }
+        public string PriceStr { get; set; }
+        public string Image { get; set; }
 
         public ProductVM()
         {
@@ -25,20 +27,23 @@ namespace ComeBien.ViewModel
         {
             Id = product.Id;
             Price = Math.Round(product.Price,2);
-
+            Image = $"../Resources/Images/Products/{Id}.png";
             switch (ConfigService.lang)
             {
                 case Languages.France:
                     Name = product.FrName;
                     Desc = product.FrDescription;
+                    PriceStr = $"Depuis {Price}€";
                     break;
                 case Languages.English:
                     Name = product.EnName;
                     Desc = product.EnDescription;
+                    PriceStr = $"Since {Price}€";
                     break;
                 default:
                     Name = product.EsName;
                     Desc = product.EsDescription;
+                    PriceStr = $"Desde {Price}€";
                     break;
             }
         }
