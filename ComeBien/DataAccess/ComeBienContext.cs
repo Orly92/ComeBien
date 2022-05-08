@@ -44,16 +44,6 @@ namespace ComeBien.DataAccess
                 FrName = "Pizza",
                 FrDescription = "Construisez votre propre pizza",
                 Price = 6
-            }, new Products
-            {
-                Id = 2,
-                EsName = "Hamburguesa",
-                EsDescription = "Construye tu propia hamburguesa",
-                EnName = "Burger",
-                EnDescription = "Build your own burger",
-                FrName = "Burger",
-                FrDescription = "Construisez votre propre hamburger",
-                Price = 4
             });
 
             modelBuilder.Entity<Ingredients>().HasData(new Ingredients

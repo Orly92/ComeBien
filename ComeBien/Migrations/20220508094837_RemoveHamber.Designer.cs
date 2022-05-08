@@ -4,14 +4,16 @@ using ComeBien.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ComeBien.Migrations
 {
     [DbContext(typeof(ComeBienContext))]
-    partial class ComeBienContextModelSnapshot : ModelSnapshot
+    [Migration("20220508094837_RemoveHamber")]
+    partial class RemoveHamber
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
