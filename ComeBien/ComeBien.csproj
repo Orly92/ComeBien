@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\addList.png" />
     <None Remove="Resources\Images\comeBien.jpg" />
     <None Remove="Resources\Images\Products\1.png" />
     <None Remove="Resources\Images\shopping_cart.png" />
@@ -36,6 +37,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Images\addList.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\comeBien.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

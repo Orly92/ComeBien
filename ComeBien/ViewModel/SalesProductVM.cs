@@ -12,25 +12,23 @@ namespace ComeBien.ViewModel
     internal class SalesProductVM : NotificationClass
     {
         private readonly IProductsRepository _productsRepository;
+        private readonly IIngredientsRepository _ingredientsRepository;
         private ObservableCollection<ProductVM> productsCollection;
+        private ObservableCollection<IngredientVM> ingredientsCollection;
         public SalesProductVM()
         {
             _productsRepository = new ProductsRepository();
+            _ingredientsRepository = new IngredientsRepository();
             InitializeCollection();
-        }
-
-        private async Task InitializeCollectionAsync()
-        {
-            var products = await _productsRepository.GetAll();
-            productsCollection = new ObservableCollection<ProductVM>(
-                                    products.Select(x=>new ProductVM(x)));
         }
 
         private void InitializeCollection()
         {
-            var products = _productsRepository.GetAllSync();
-            productsCollection = new ObservableCollection<ProductVM>(
-                                    products.Select(x => new ProductVM(x)));
+            var products = _productsRepository.GetAllSync().Select(x => new ProductVM(x));
+            productsCollection = new ObservableCollection<ProductVM>(products);
+
+            var ingredients = _ingredientsRepository.GetAllSync().Select(x => new IngredientVM(x));
+            ingredientsCollection = new ObservableCollection<IngredientVM>(ingredients);
         }
 
         public ObservableCollection<ProductVM> ProductsCollection
@@ -40,6 +38,16 @@ namespace ComeBien.ViewModel
             {
                 productsCollection = value;
                 OnPropertyChanged("ProductsCollection");
+            }
+        }
+
+        public ObservableCollection<IngredientVM> IngredCollection
+        {
+            get { return ingredientsCollection; }
+            set
+            {
+                ingredientsCollection = value;
+                OnPropertyChanged("IngredCollection");
             }
         }
     }

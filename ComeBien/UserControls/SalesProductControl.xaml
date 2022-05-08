@@ -9,8 +9,7 @@
     <Grid x:Name="SalesProductGrid" Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="320"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="320"/>
+            <ColumnDefinition Width="400"/>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical" Grid.Column="0">
             <ItemsControl x:Name="ProductItemControl" ItemsSource="{Binding ProductsCollection}">
@@ -32,6 +31,30 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-        </StackPanel>  
+        </StackPanel>
+        <StackPanel Grid.Column="1" Orientation="Horizontal">
+            <ItemsControl ItemsSource="{Binding IngredCollection}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="50"></ColumnDefinition>
+                                <ColumnDefinition Width="40"></ColumnDefinition>
+                                <ColumnDefinition Width="50"></ColumnDefinition>
+                                <ColumnDefinition Width="50"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Name}" Grid.Column="0" Margin="10"/>
+                            <Button Grid.Column="1" Width="40" Height="30">-</Button>
+                            <TextBlock Text="{Binding Quantity}" TextAlignment="Center" Grid.Column="2" />
+                            <Button Grid.Column="3" Width="40" Height="30" >
+                                +
+                            </Button>
+                            <TextBlock Text="{Binding Price}" Margin="10,0,0,0" Grid.Column="4" >€</TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
     </Grid>
 </UserControl>
