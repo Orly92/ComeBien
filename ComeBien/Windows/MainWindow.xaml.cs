@@ -30,7 +30,6 @@ namespace ComeBien
     {
         private readonly FrameworkElement _ingredientsControl;
         private readonly FrameworkElement _salesProductControl;
-        private readonly FrameworkElement _shoppingCartControl;
         private readonly Brush _activeColor;
         private readonly Brush _blackColor;
         public MainWindow()
@@ -41,7 +40,6 @@ namespace ComeBien
 
             _ingredientsControl = new IngredientsControl();
             _salesProductControl = new SalesProductControl();
-            _shoppingCartControl = new ShoppingCartControl();
 
             _activeColor = (Brush)(new BrushConverter().ConvertFrom("#FF0096FF"));
             _blackColor = new SolidColorBrush(Colors.Black);
@@ -145,7 +143,7 @@ namespace ComeBien
                 case MenuEnum.ShoppingCart:
                     MenuHome.Foreground = _blackColor;
                     MenuIngredients.Foreground = _blackColor;
-                    content.Content = _shoppingCartControl;
+                    content.Content = new ShoppingCartControl();
                     break;
 
                 default:

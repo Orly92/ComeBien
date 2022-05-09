@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="Resources\Images\addList.png" />
     <None Remove="Resources\Images\comeBien.jpg" />
+    <None Remove="Resources\Images\deleteList.png" />
     <None Remove="Resources\Images\Products\1.png" />
     <None Remove="Resources\Images\shopping_cart.png" />
   </ItemGroup>
@@ -43,6 +44,7 @@
     <Resource Include="Resources\Images\comeBien.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\deleteList.png" />
     <Resource Include="Resources\Images\Products\1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

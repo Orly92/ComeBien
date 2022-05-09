@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ComeBien.ViewModel
 {
@@ -12,6 +13,8 @@ namespace ComeBien.ViewModel
     {
         private decimal _totalAmount;
         private ObservableCollection<ShoppingCartProductVM> _productsCollection;
+        private ICommand _payCommand;
+        private ICommand _removeProductCommand;
         public ShoppingCartVM()
         {
             InitializeData();
@@ -23,20 +26,18 @@ namespace ComeBien.ViewModel
             var shoppingCart = ShoppingCartService.GetInstance().ShoppingCart;
             
             TotalAmount = shoppingCart.TotalAmount;
+            int index = 0;
             foreach(var product in shoppingCart.Products)
             {
-                string ingredients = "";
-                foreach(var ingredient in product.Ingredients)
-                {
-                    ingredients += $"{ingredient.Quantity} x {ingredient.Name}";
-                }
                 shoppingCartProducts.Add(new ShoppingCartProductVM
                 {
+                    Index = index,
                     ProductId = product.ProductId,
                     Name = product.Name,
                     Price = product.Price,
-                    Ingredients = ingredients
+                    Ingredients = String.Join(",", product.Ingredients.Select(x => $"{x.Quantity} x {x.Name}"))
                 });
+                index++;
             }
             ProductsCollection = new ObservableCollection<ShoppingCartProductVM>(shoppingCartProducts);
         }
@@ -56,6 +57,53 @@ namespace ComeBien.ViewModel
                 _productsCollection = value;
                 OnPropertyChanged("ProductsCollection");
             }
+        }
+
+        public ICommand PayCommand
+        {
+            get
+            {
+                if (_payCommand == null)
+                {
+                    SetPayCommand();
+                }
+
+                return _payCommand;
+            }
+        }
+
+        private void SetPayCommand()
+        {
+            bool canExecute = ShoppingCartService.GetInstance().ShoppingCart.Products.Count > 0;
+            _payCommand = new RelayCommand(param => Pay(), canExecute);
+        }
+
+        private void Pay()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICommand RemoveProductCommand
+        {
+            get
+            {
+                if (_removeProductCommand == null)
+                    _removeProductCommand = new RelayCommand(param => RemoveProduct((int)param), true);
+
+                return _removeProductCommand;
+            }
+        }
+
+        private void RemoveProduct(int index)
+        {
+            var product = ProductsCollection.ElementAt(index);
+            TotalAmount -= product.Price;
+            ProductsCollection.RemoveAt(index);
+
+            ProductsCollection.Where(x => x.Index > index).ToList().ForEach(x => x.Index -= 1);
+
+            ShoppingCartService.GetInstance().RemoveProduct(index);
+
         }
     }
 }

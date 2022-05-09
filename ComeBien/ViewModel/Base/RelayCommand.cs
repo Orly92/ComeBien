@@ -40,5 +40,6 @@ namespace ComeBien.ViewModel
 		{
 			_execute(parameter);
 		}
+
 	}
 }

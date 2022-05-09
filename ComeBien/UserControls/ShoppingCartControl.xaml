@@ -6,7 +6,43 @@
              xmlns:local="clr-namespace:ComeBien.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="10">
-            
+    <Grid x:Name="ShoppingCartGrid" Margin="10">
+        <StackPanel Orientation="Vertical">
+            <UniformGrid x:Name="HeaderGrid" Rows="1" Columns="4" Margin="10">
+                <TextBlock Background="Aqua">Producto</TextBlock>
+                <TextBlock Background="Aqua">Ingredientes</TextBlock>
+                <TextBlock Background="Aqua" >Precio</TextBlock>
+                <TextBlock Background="Aqua" ></TextBlock>
+            </UniformGrid>
+
+            <ItemsControl  x:Name="ProductItemControl" ItemsSource="{Binding ProductsCollection}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <UniformGrid Margin="10" Rows="1" Columns="4" HorizontalAlignment="Stretch">
+                            <TextBlock Text="{Binding Name}" Background="Azure"/>
+                            <TextBlock Text="{Binding Ingredients}" Background="Azure"/>
+                            <TextBlock Text="{Binding Price}" Background="Azure">€</TextBlock>
+                            <Button HorizontalAlignment="Left" Height="48"
+                                    VerticalAlignment="Center" Margin="0,0,0,0" Width="40"
+                                    Background="Red" CommandParameter="{Binding Path=Index}"
+                                    Command="{Binding Path=DataContext.RemoveProductCommand,ElementName=ShoppingCartGrid}">
+                                <Image Source="../Resources/Images/deleteList.png" Height="40"  
+                                         VerticalAlignment="Center" />
+                            </Button>
+                        </UniformGrid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <UniformGrid Rows="1" Columns="4" Margin="10">
+                <TextBlock Background="Azure"></TextBlock>
+                <TextBlock Background="Azure">Total:</TextBlock>
+                <TextBlock Background="Azure" Text="{Binding TotalAmount}"></TextBlock>
+                <TextBlock Background="Azure" ></TextBlock>
+            </UniformGrid>
+
+            <Button Margin="10" Content="Pagar" Background="Red" Command="{Binding PayCommand}"
+                    Width="100" Height="50"></Button>
+        </StackPanel>
     </Grid>
 </UserControl>
