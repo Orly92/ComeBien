@@ -250,6 +250,15 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Haz tu Pedido.
+        /// </summary>
+        public static string MakePedidoMenu {
+            get {
+                return ResourceManager.GetString("MakePedidoMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Loguearse.
         /// </summary>
         public static string MenuLogin {

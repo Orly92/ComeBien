@@ -27,11 +27,12 @@
                         </Grid>
                     </ItemsPanelTemplate>
                 </Menu.ItemsPanel>
-                <MenuItem  Height="50" Width="130" Grid.Column="0" Click="MenuHomeItem_Click">
+                <MenuItem  Height="50" Width="180" Grid.Column="0" Click="MenuHomeItem_Click">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Image Width="40" Height="40" Source="../Resources/Images/Restaurant.ico" />
-                            <Label x:Name="MenuHome" Content="_ComeBien" VerticalAlignment="Center" BorderThickness="2,0" Foreground="#FF0096FF" >
+                            <Label x:Name="MenuHome" Content="{x:Static resx:Resources.MakePedidoMenu}" VerticalAlignment="Center" 
+                                   BorderThickness="2,0" Foreground="#FF0096FF" >
                             </Label>
                         </StackPanel>
                     </MenuItem.Header>

@@ -180,6 +180,9 @@
   <data name="Logout" xml:space="preserve">
     <value>Desloguearse</value>
   </data>
+  <data name="MakePedidoMenu" xml:space="preserve">
+    <value>_Haz tu Pedido</value>
+  </data>
   <data name="MenuLogin" xml:space="preserve">
     <value>_Loguearse</value>
   </data>
