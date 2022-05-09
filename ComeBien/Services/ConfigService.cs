@@ -1,4 +1,5 @@
 ﻿using ComeBien.Models.Globals;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -23,9 +24,12 @@ namespace ComeBien.Services
 
         public static void Load()
         {
+            Log.Information("Cargando datos de configuración");
             lang = Read("lang");
             userName = Read("userName");
             isLogged = Read("isLogged") == "true";
+
+            Log.Information("Datos cargados correctamente");
         }
 
         private static string Read(string key)
@@ -49,14 +53,17 @@ namespace ComeBien.Services
 
         public static void Save()
         {
+            Log.Information("Salvando los datos de configuración");
             var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             
             Write(configFile, "lang", lang);
             Write(configFile, "isLogged", isLogged == true ? "true" : "false");
             Write(configFile, "userName", userName);
-            
+
             configFile.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
+
+            Log.Information($"Valores salvados lang={lang},isLogged={isLogged},userName={userName}");
         }
     }
 }

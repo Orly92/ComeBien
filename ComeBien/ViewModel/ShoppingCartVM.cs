@@ -1,5 +1,6 @@
 ﻿using ComeBien.DataAccess.Repositories;
 using ComeBien.Services;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -26,6 +27,8 @@ namespace ComeBien.ViewModel
 
         private void InitializeData()
         {
+            Log.Information("Obteniendo datos iniciales en ShoppingCartVM");
+
             IList<ShoppingCartProductVM> shoppingCartProducts = new List<ShoppingCartProductVM>();  
             var shoppingCart = ShoppingCartService.GetInstance().ShoppingCart;
             
@@ -36,6 +39,7 @@ namespace ComeBien.ViewModel
                 shoppingCartProducts.Add(new ShoppingCartProductVM
                 {
                     Index = index,
+                    IndexEdited = index,
                     ProductId = product.ProductId,
                     Name = product.Name,
                     Price = product.Price,
@@ -44,6 +48,8 @@ namespace ComeBien.ViewModel
                 index++;
             }
             ProductsCollection = new ObservableCollection<ShoppingCartProductVM>(shoppingCartProducts);
+
+            Log.Information("Datos iniciales cargados en ShoppingCartVM");
         }
 
         public decimal TotalAmount { 
@@ -86,17 +92,30 @@ namespace ComeBien.ViewModel
         {
             try
             {
+                if(ShoppingCartService.GetInstance().ShoppingCart.Products.Count == 0)
+                {
+                    MessageBox.Show(ComeBien.Resources.Resources.ResourceManager.GetString("CartEmpty"),
+                            $"", MessageBoxButton.OK,
+                            MessageBoxImage.Information);
+                    return;
+                }
+                Log.Information("Intento de pagar la orden");
                 _orderService.PayOrder();
+
+                Log.Information("Orden pagada correctamente");
 
                 ProductsCollection.Clear();
                 TotalAmount = 0;
+
+                Log.Information("Información del carrito View Model ha sido limpiada");
 
                 MessageBox.Show(ComeBien.Resources.Resources.ResourceManager.GetString("ShoppingSuccess"),
                             $"{ComeBien.Resources.Resources.ResourceManager.GetString("Congrats")}!!!", MessageBoxButton.OK,
                             MessageBoxImage.Information);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.Error(ex, "Error pagando la orden");
                 MessageBox.Show(ComeBien.Resources.Resources.ResourceManager.GetString("ErrorMessage"),
                             $"{ComeBien.Resources.Resources.ResourceManager.GetString("Error")}!!!", MessageBoxButton.OK,
                             MessageBoxImage.Error);
@@ -116,14 +135,29 @@ namespace ComeBien.ViewModel
 
         private void RemoveProduct(int index)
         {
-            var product = ProductsCollection.ElementAt(index);
-            TotalAmount -= product.Price;
-            ProductsCollection.RemoveAt(index);
+            try
+            {
+                Log.Information("Intento de eliminar producto del carrito");
+                var product = ProductsCollection.FirstOrDefault(x=>x.Index == index);
+                
+                int indexEdited = product.IndexEdited;
+                TotalAmount -= product.Price;
+                ProductsCollection.Remove(product);
 
-            ProductsCollection.Where(x => x.Index > index).ToList().ForEach(x => x.Index -= 1);
+                ProductsCollection.Where(x => x.Index > index).ToList().ForEach(x => x.IndexEdited -= 1);
 
-            ShoppingCartService.GetInstance().RemoveProduct(index);
+                ShoppingCartService.GetInstance().RemoveProduct(indexEdited);
 
+                Log.Information("Producto eliminado del carrito");
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, $"Error eliminando el producto de index {index} del carrito");
+                MessageBox.Show(ComeBien.Resources.Resources.ResourceManager.GetString("ErrorMessage"),
+                            $"{ComeBien.Resources.Resources.ResourceManager.GetString("Error")}!!!", MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+            }
+            
         }
     }
 }

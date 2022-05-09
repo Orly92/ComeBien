@@ -132,6 +132,7 @@ namespace ComeBien
 
         private void SetMenuColor(MenuEnum menu)
         {
+            Log.Information($"Click en el menú {menu}");
             switch (menu)
             {
                 case MenuEnum.Ingredients:

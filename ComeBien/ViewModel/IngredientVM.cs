@@ -1,6 +1,7 @@
 ﻿using ComeBien.Models.Database;
 using ComeBien.Models.Globals;
 using ComeBien.Services;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,6 +67,7 @@ namespace ComeBien.ViewModel
 
         private void AddIng()
         {
+            Log.Information($"Adicionando un ingrediente {Id}:{Name}");
             Quantity += 1;
             OnPropertyChanged("Quantity");
         }
@@ -74,6 +76,7 @@ namespace ComeBien.ViewModel
         {
             if (Quantity > 0)
             {
+                Log.Information($"Disminuyendo un ingrediente {Id}:{Name}");
                 Quantity -= 1;
                 OnPropertyChanged("Quantity");
             }
@@ -81,6 +84,7 @@ namespace ComeBien.ViewModel
 
         public void ResetQuantity()
         {
+            Log.Information($"Reseteando un ingrediente {Id}:{Name}");
             Quantity = 0;
             OnPropertyChanged("Quantity");
         }

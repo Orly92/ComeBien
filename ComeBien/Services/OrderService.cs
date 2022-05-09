@@ -1,4 +1,5 @@
 ﻿using ComeBien.DataAccess.Repositories;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,13 @@ namespace ComeBien.Services
 
         public async Task PayOrder()
         {
-            await _orderRepository.CreateOrder(ShoppingCartService.GetInstance().ShoppingCart);
+            int idOrder = await _orderRepository.CreateOrder(ShoppingCartService.GetInstance().ShoppingCart);
+
+            Log.Information($"Orden creada con id {idOrder}");
 
             ShoppingCartService.GetInstance().Reset();
+
+            Log.Information("Carrito en servicio reseteado");
         }
     }
 

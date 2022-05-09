@@ -79,6 +79,15 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Debe seleccionar al menos un producto.
+        /// </summary>
+        public static string CartEmpty {
+            get {
+                return ResourceManager.GetString("CartEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ¿Está seguro que quiere eliminar este registro?.
         /// </summary>
         public static string ConfirmDelete {

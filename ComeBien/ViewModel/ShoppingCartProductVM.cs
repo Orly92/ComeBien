@@ -16,6 +16,7 @@ namespace ComeBien.ViewModel
         }
 
         public int Index { get; set; }
+        public int IndexEdited { get; set; }
         public int ProductId { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }

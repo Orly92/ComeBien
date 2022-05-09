@@ -123,6 +123,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
+  <data name="CartEmpty" xml:space="preserve">
+    <value>Debe seleccionar al menos un producto</value>
+  </data>
   <data name="ConfirmDelete" xml:space="preserve">
     <value>¿Está seguro que quiere eliminar este registro?</value>
   </data>

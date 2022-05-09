@@ -41,6 +41,7 @@ namespace ComeBien
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             ConfigService.Save();
+            Log.Information("Aplicación apagandose...");
         }
 
         private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
