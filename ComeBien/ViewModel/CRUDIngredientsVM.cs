@@ -100,7 +100,7 @@ namespace ComeBien.ViewModel
             }
         }
 
-        public async Task DeleteIngredient(int id)
+        private async Task DeleteIngredient(int id)
         {
             if (MessageBox.Show(
                 ComeBien.Resources.Resources.ResourceManager.GetString("ConfirmDelete"),
@@ -128,7 +128,7 @@ namespace ComeBien.ViewModel
             }
         }
 
-        public async Task SaveData()
+        private async Task SaveData()
         {
             if (SelectedIngredient != null 
                 && !string.IsNullOrEmpty(SelectedIngredient.FrName)
@@ -183,7 +183,7 @@ namespace ComeBien.ViewModel
             Log.Information($"Ingrediente {id} seleccionado");
             SelectedIngredient = await _ingredientsRepository.FindById(id);
         }
-        public void ResetData()
+        private void ResetData()
         {
             SelectedIngredient = new Ingredients();
         }
