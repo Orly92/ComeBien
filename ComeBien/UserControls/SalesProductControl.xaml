@@ -12,8 +12,8 @@
             <StackPanel Orientation="Vertical">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Orientation="Vertical" Grid.Column="0">
                         <ItemsControl x:Name="ProductItemControl" ItemsSource="{Binding ProductsCollection}">
@@ -29,9 +29,10 @@
                                         <TextBlock Text="{Binding Desc}" Grid.Row="0" />
                                         <Image Width="300" Height="280" 
                                    Source="{Binding Image}" Grid.Row="1" />
-                                        <TextBlock Text="{Binding PriceStr}" Grid.Row="2"></TextBlock>
-                                        <Button Grid.Row="3" CommandParameter="{Binding Path=Id}" Content="{x:Static resx:Resources.Add }"
-                                    Command="{Binding Path=DataContext.AddProductCommand,ElementName=SalesProductGrid}"></Button>
+                                        <TextBlock Text="{Binding PriceStr}" Grid.Row="2" HorizontalAlignment="Left"></TextBlock>
+                                        <Button Margin="5" Grid.Row="3" CommandParameter="{Binding Path=Id}" Content="{x:Static resx:Resources.Add }"
+                                                Command="{Binding Path=DataContext.AddProductCommand,ElementName=SalesProductGrid}"
+                                                ></Button>
                                     </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>

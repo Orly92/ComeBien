@@ -7,76 +7,78 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
     <Grid x:Name="IngredientsGrid" Margin="10">
-        <StackPanel Orientation="Vertical">
-            <GroupBox Header="{x:Static resx:Resources.Ingredient}" Margin="10" Height="176" Width="534">
-            <Grid Height="150">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="160"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label Content="{x:Static resx:Resources.EsName}" HorizontalAlignment="Left" 
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical">
+                <GroupBox Header="{x:Static resx:Resources.Ingredient}" Margin="10" Height="176" Width="534">
+                    <Grid Height="150">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="{x:Static resx:Resources.EsName}" HorizontalAlignment="Left" 
                        VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="0"/>
-                <TextBox Grid.Row="0" Grid.Column="1" x:Name="TextBoxName" Height="27" 
+                        <TextBox Grid.Row="0" Grid.Column="1" x:Name="TextBoxName" Height="27" 
                        Text="{Binding Path=SelectedIngredient.EsName, Mode=TwoWay}"  Margin="5"  Width="300" HorizontalAlignment="Left"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="TextBlockId" 
+                        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="TextBlockId" 
                        Visibility="Hidden" Text="{Binding Path=SelectedIngredient.Id, Mode=TwoWay}"/>
-                    <Label Content="{x:Static resx:Resources.EnName}" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                        <Label Content="{x:Static resx:Resources.EnName}" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
                        Grid.Row="1" Grid.Column="0" />
-                <TextBox Grid.Row="1" Grid.Column="1" x:Name="TextBoxAddress" Height="27" 
+                        <TextBox Grid.Row="1" Grid.Column="1" x:Name="TextBoxAddress" Height="27" 
                        Text="{Binding Path=SelectedIngredient.EnName, Mode=TwoWay}" Margin="5" Width="300" HorizontalAlignment="Left"/>
-                    <Label Content="{x:Static resx:Resources.FrName}" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                        <Label Content="{x:Static resx:Resources.FrName}" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
                        Grid.Row="2" Grid.Column="0" />
-                <TextBox Grid.Row="2" Grid.Column="1" x:Name="TextBoxContact" Height="27"
+                        <TextBox Grid.Row="2" Grid.Column="1" x:Name="TextBoxContact" Height="27"
                        Text="{Binding Path=SelectedIngredient.FrName, Mode=TwoWay}" Margin="5" Width="300" HorizontalAlignment="Left"/>
-                
-                <Label Content="{x:Static resx:Resources.Price}" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+
+                        <Label Content="{x:Static resx:Resources.Price}" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
                     Grid.Row="3" Grid.Column="0"/>
-                <TextBox Grid.Row="3" Grid.Column="1" x:Name="TextBoxAge" Height="27" 
+                        <TextBox Grid.Row="3" Grid.Column="1" x:Name="TextBoxAge" Height="27" 
                     Text="{Binding Path=SelectedIngredient.Price, Mode=TwoWay}" Margin="5" Width="70" HorizontalAlignment="Left"/>
 
-                </Grid>
-        </GroupBox>
-        <StackPanel Height="40" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="ButtonSave" Content="{x:Static resx:Resources.Save}" Height="30" Width="80"
+                    </Grid>
+                </GroupBox>
+                <StackPanel Height="40" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="ButtonSave" Content="{x:Static resx:Resources.Save}" Height="30" Width="80"
                     Command="{Binding SaveCommand}"/>
-                <Button x:Name="ButtonCancel" Content="{x:Static resx:Resources.Cancel}" Height="30" Width="80" 
+                    <Button x:Name="ButtonCancel" Content="{x:Static resx:Resources.Cancel}" Height="30" Width="80" 
                     Command="{Binding ResetCommand}" Margin="5,0,10,0"/>
-            </StackPanel>
-            <StackPanel Height="210">
-                <DataGrid x:Name="DataGridIngredients" AutoGenerateColumns="False"
-                      ItemsSource="{Binding IngredientsCollection}" CanUserAddRows="False" Height="129" Margin="10">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" Visibility="Hidden"/>
-                        <DataGridTextColumn Header="{x:Static resx:Resources.EsName}" Binding="{Binding Path=EsName}" Width="200"  IsReadOnly="True"/>
-                        <DataGridTextColumn Header="{x:Static resx:Resources.EnName}" Binding="{Binding Path=EnName}" Width="200" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="{x:Static resx:Resources.FrName}" Binding="{Binding Path=FrName}" Width="200" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="{x:Static resx:Resources.Price}" Binding="{Binding Path=Price}" Width="50"  IsReadOnly="True"/>
-                        <DataGridTemplateColumn Width="100">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Content="{x:Static resx:Resources.Select}" x:Name="ButtonSelect" CommandParameter="{Binding Path=Id}"
+                </StackPanel>
+                <StackPanel Height="400">
+                    <DataGrid x:Name="DataGridIngredients" AutoGenerateColumns="False"
+                      ItemsSource="{Binding IngredientsCollection}" CanUserAddRows="False" Margin="10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" Visibility="Hidden"/>
+                            <DataGridTextColumn Header="{x:Static resx:Resources.EsName}" Binding="{Binding Path=EsName}" Width="200"  IsReadOnly="True"/>
+                            <DataGridTextColumn Header="{x:Static resx:Resources.EnName}" Binding="{Binding Path=EnName}" Width="200" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="{x:Static resx:Resources.FrName}" Binding="{Binding Path=FrName}" Width="200" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="{x:Static resx:Resources.Price}" Binding="{Binding Path=Price}" Width="50"  IsReadOnly="True"/>
+                            <DataGridTemplateColumn Width="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="{x:Static resx:Resources.Select}" x:Name="ButtonSelect" CommandParameter="{Binding Path=Id}"
                                         Command="{Binding Path=DataContext.SelectCommand,ElementName=IngredientsGrid}"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Width="100">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Content="{x:Static resx:Resources.Delete}" x:Name="ButtonDelete" CommandParameter="{Binding Path=Id}"
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="{x:Static resx:Resources.Delete}" x:Name="ButtonDelete" CommandParameter="{Binding Path=Id}"
                                         Command="{Binding Path=DataContext.DeleteCommand,ElementName=IngredientsGrid}"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
+        </ScrollViewer>
     </Grid>
     
 </UserControl>
