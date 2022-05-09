@@ -59,11 +59,18 @@ namespace ComeBien.Services
             return ShoppingCart.Products.Count;
         }
 
-        internal void RemoveProduct(int index)
+        public void RemoveProduct(int index)
         {
             var product = ShoppingCart.Products.ElementAt(index);
             ShoppingCart.TotalAmount -= product.Price;
             ShoppingCart.Products.RemoveAt(index);
+            ShoppingCartMenuVM.EditShoppingCart();
+        }
+
+        public void Reset()
+        {
+            ShoppingCart.TotalAmount = 0;
+            ShoppingCart.Products.Clear();
             ShoppingCartMenuVM.EditShoppingCart();
         }
     }

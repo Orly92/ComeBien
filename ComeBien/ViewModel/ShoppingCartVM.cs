@@ -1,10 +1,12 @@
-﻿using ComeBien.Services;
+﻿using ComeBien.DataAccess.Repositories;
+using ComeBien.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace ComeBien.ViewModel
@@ -15,8 +17,10 @@ namespace ComeBien.ViewModel
         private ObservableCollection<ShoppingCartProductVM> _productsCollection;
         private ICommand _payCommand;
         private ICommand _removeProductCommand;
+        private readonly IOrderService _orderService;
         public ShoppingCartVM()
         {
+            _orderService = new OrderService();
             InitializeData();
         }
 
@@ -80,7 +84,13 @@ namespace ComeBien.ViewModel
 
         private void Pay()
         {
-            throw new NotImplementedException();
+            _orderService.PayOrder();
+
+            ProductsCollection.Clear();
+            TotalAmount = 0;
+
+            MessageBox.Show("Ha comprado con éxito. Vuelva pronto",
+                        "Enhorabuena!!!", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         public ICommand RemoveProductCommand

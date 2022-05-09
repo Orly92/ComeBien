@@ -38,24 +38,24 @@ namespace ComeBien.DataAccess.Repositories
 
                     idOrder = order.Id;
 
-                    IList<OrderProducts> orderProducts = new List<OrderProducts>();
                     IList<OrderProductIngredients> orderProductsIng = new List<OrderProductIngredients>();
                     foreach(var product in shoppingCart.Products)
                     {
-                        orderProducts.Add(new OrderProducts
+                        var orderProduct = new OrderProducts
                         {
                             OrderId = idOrder,
                             ProductId = product.ProductId,
                             Price = product.Price
-                        });
+                        };
+                        await dbContext.OrderProducts.AddAsync(orderProduct);
+                        await dbContext.SaveChangesAsync();
 
-                        foreach(var ingredient in product.Ingredients)
+                        foreach (var ingredient in product.Ingredients)
                         {
                             var dbIng = dbIngredients.FirstOrDefault(x => x.Id == ingredient.IngredientId);
                             orderProductsIng.Add(new OrderProductIngredients
                             {
-                                OrderId = idOrder,
-                                ProductId = product.ProductId,
+                                ItemId = orderProduct.ItemId,
                                 IngredientId = ingredient.IngredientId,
                                 Quantity = ingredient.Quantity,
                                 EnName = dbIng?.EnName,
@@ -65,7 +65,7 @@ namespace ComeBien.DataAccess.Repositories
                         }
                     }
 
-                    await dbContext.OrderProducts.AddRangeAsync(orderProducts);
+                    
                     await dbContext.OrderProductIngredients.AddRangeAsync(orderProductsIng);
                     await dbContext.SaveChangesAsync();
 

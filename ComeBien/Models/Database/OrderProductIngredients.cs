@@ -9,11 +9,9 @@ namespace ComeBien.Models.Database
 {
     public class OrderProductIngredients
     {
+        
         [Required]
-        public int OrderId { get; set; }
-
-        [Required]
-        public int ProductId { get; set; }
+        public int ItemId { get; set; }
 
         [Required]
         public int IngredientId { get; set; }

@@ -31,7 +31,7 @@ namespace ComeBien.DataAccess
 
             modelBuilder.Entity<OrderProductIngredients>(oi =>
             {
-                oi.HasKey(x => new {x.OrderId,x.ProductId,x.IngredientId});
+                oi.HasKey(x => new {x.ItemId,x.IngredientId});
             });
 
             modelBuilder.Entity<Products>().HasData(new Products

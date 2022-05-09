@@ -11,7 +11,7 @@ namespace ComeBien.Models.Database
     public class OrderProducts
     {
         [Key]
-        public int Id { get; set; }
+        public int ItemId { get; set; }
 
         [Required]
         public int OrderId { get; set; }
