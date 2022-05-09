@@ -39,7 +39,7 @@ namespace ComeBien.ViewModel
                     ProductId = product.ProductId,
                     Name = product.Name,
                     Price = product.Price,
-                    Ingredients = String.Join(",", product.Ingredients.Select(x => $"{x.Quantity} x {x.Name}"))
+                    Ingredients = String.Join($"{Environment.NewLine}", product.Ingredients.Select(x => $"{x.Quantity} x {x.Name}"))
                 });
                 index++;
             }
