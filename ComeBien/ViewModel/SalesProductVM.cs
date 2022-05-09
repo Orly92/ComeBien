@@ -69,17 +69,19 @@ namespace ComeBien.ViewModel
         private void AddProductToShoppingCart(int productId)
         {
             var ingredients = IngredCollection.Where(x=>x.Quantity > 0).ToList();
-            decimal totalAmount = ingredients.Sum(x => x.Quantity * x.Price) + (ProductsCollection
-                                .FirstOrDefault(x=>x.Id == productId)?.Price ?? 0);
+            var product = ProductsCollection.FirstOrDefault(x => x.Id == productId);
+            decimal totalAmount = ingredients.Sum(x => x.Quantity * x.Price) + (product?.Price ?? 0);
 
             ShoppingCartProduct shoppingCartProduct = new ShoppingCartProduct
             {
                 ProductId = productId,
                 Price = totalAmount,
+                Name = product?.Name,
                 Ingredients = ingredients.Select(x => new ShoppingCartIngredients
                 {
                     IngredientId = x.Id,
-                    Quantity = x.Quantity
+                    Quantity = x.Quantity,
+                    Name = x.Name
                 }).ToList()
             };
 

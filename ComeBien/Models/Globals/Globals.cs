@@ -28,6 +28,7 @@ namespace ComeBien.Models.Globals
     public enum MenuEnum
     {
         Home,
-        Ingredients
+        Ingredients,
+        ShoppingCart
     }
 }

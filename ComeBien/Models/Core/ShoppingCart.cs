@@ -24,6 +24,7 @@ namespace ComeBien.Models.Core
             Ingredients = new List<ShoppingCartIngredients>();
         }
         public int ProductId { get; set; }
+        public string Name { get; set; }
         public decimal Price { get; set; }
         public IList<ShoppingCartIngredients> Ingredients { get; set; }
     }
@@ -31,6 +32,7 @@ namespace ComeBien.Models.Core
     public class ShoppingCartIngredients
     {
         public int IngredientId { get; set; }
+        public string Name { get; set; }
         public int Quantity { get; set; }
     }
 }

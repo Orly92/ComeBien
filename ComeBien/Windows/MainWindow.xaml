@@ -48,7 +48,8 @@
                     <MenuItem x:Name="MenuEnglish" Header="{x:Static resx:Resources.English}" Click="MenuEnglish_Click"/>
                     <MenuItem x:Name="MenuFrance" Header="{x:Static resx:Resources.French}" Click="MenuFrance_Click"/>
                 </MenuItem>
-                <MenuItem x:Name="ShoppingCartMenu" HorizontalAlignment="Right" Grid.Column="5">
+                <MenuItem x:Name="ShoppingCartMenu" HorizontalAlignment="Right" Grid.Column="5"
+                          Click="ShoppingCartMenu_Click">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Image Width="40" Height="40" Source="../Resources/Images/shopping_cart.png" />
