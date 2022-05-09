@@ -20,5 +20,9 @@ namespace ComeBien.Models.Database
 
         [Required]
         public int Quantity { get; set; }
+
+        public string EsName { get; set; }
+        public string EnName { get; set; }
+        public string FrName { get; set; }
     }
 }

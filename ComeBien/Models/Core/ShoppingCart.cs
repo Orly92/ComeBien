@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ComeBien.Models.Core
 {
-    internal class ShoppingCart
+    public class ShoppingCart
     {
         public ShoppingCart()
         {
