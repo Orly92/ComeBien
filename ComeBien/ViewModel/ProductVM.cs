@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ComeBien.ViewModel
 {
-    internal class ProductVM : NotificationClass
+    public class ProductVM : NotificationClass
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -28,9 +28,9 @@ namespace ComeBien.ViewModel
             InitializeCollection();
         }
 
-        private async Task InitializeCollection()
+        private void InitializeCollection()
         {
-            var ingredients = await _ingredientsRepository.GetAll();
+            var ingredients = _ingredientsRepository.GetAllSync();
             IngredientsCollection = new ObservableCollection<Ingredients>(ingredients);
         }
 
@@ -94,13 +94,13 @@ namespace ComeBien.ViewModel
             get
             {
                 if (_deleteCommand == null)
-                    _deleteCommand = new RelayCommand(async param => await DeleteStudent((int)param), true);
+                    _deleteCommand = new RelayCommand(async param => await DeleteIngredient((int)param), true);
 
                 return _deleteCommand;
             }
         }
 
-        public async Task DeleteStudent(int id)
+        public async Task DeleteIngredient(int id)
         {
             if (MessageBox.Show(
                 ComeBien.Resources.Resources.ResourceManager.GetString("ConfirmDelete"),
@@ -123,7 +123,7 @@ namespace ComeBien.ViewModel
                 }
                 finally
                 {
-                    await InitializeCollection();
+                    InitializeCollection();
                 }
             }
         }
@@ -167,7 +167,7 @@ namespace ComeBien.ViewModel
                 }
                 finally
                 {
-                    await InitializeCollection();
+                    InitializeCollection();
                 }
             }
             else

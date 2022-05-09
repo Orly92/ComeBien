@@ -13,7 +13,7 @@ using System.Windows.Input;
 
 namespace ComeBien.ViewModel
 {
-    internal class SalesProductVM : NotificationClass
+    public class SalesProductVM : NotificationClass
     {
         private readonly IProductsRepository _productsRepository;
         private readonly IIngredientsRepository _ingredientsRepository;

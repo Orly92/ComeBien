@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ComeBien.ViewModel
 {
-    internal class ShoppingCartMenuVM : NotificationClass
+    public class ShoppingCartMenuVM : NotificationClass
     {
         public ShoppingCartMenuVM()
         {

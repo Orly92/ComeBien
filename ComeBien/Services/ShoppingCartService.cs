@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ComeBien.Services
 {
-    internal class ShoppingCartService
+    public class ShoppingCartService
     {
         public ShoppingCartService()
         {
@@ -64,13 +64,6 @@ namespace ComeBien.Services
             var product = ShoppingCart.Products.ElementAt(index);
             ShoppingCart.TotalAmount -= product.Price;
             ShoppingCart.Products.RemoveAt(index);
-
-            IList<ShoppingCartProduct> shoppingCartProducts = new List<ShoppingCartProduct>();
-            foreach(var item in ShoppingCart.Products)
-            {
-                shoppingCartProducts.Add(item);
-
-            }
 
             ShoppingCartMenuVM.EditShoppingCart();
         }

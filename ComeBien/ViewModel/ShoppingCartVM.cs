@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace ComeBien.ViewModel
 {
-    internal class ShoppingCartVM : NotificationClass
+    public class ShoppingCartVM : NotificationClass
     {
         private decimal _totalAmount;
         private ObservableCollection<ShoppingCartProductVM> _productsCollection;

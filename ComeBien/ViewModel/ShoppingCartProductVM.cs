@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace ComeBien.ViewModel
 {
-    internal class ShoppingCartProductVM
+    public class ShoppingCartProductVM
     {
         
         public ShoppingCartProductVM()
