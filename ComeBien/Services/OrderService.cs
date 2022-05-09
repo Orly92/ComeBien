@@ -16,6 +16,11 @@ namespace ComeBien.Services
             _orderRepository = new OrderRepository();   
         }
 
+        public OrderService(IOrderRepository orderRepository)
+        {
+            _orderRepository = orderRepository;
+        }
+
         public async Task PayOrder()
         {
             int idOrder = await _orderRepository.CreateOrder(ShoppingCartService.GetInstance().ShoppingCart);
