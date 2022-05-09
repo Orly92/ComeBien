@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add" xml:space="preserve">
+    <value>Añadir</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
   <data name="ConfirmDelete" xml:space="preserve">
     <value>¿Está seguro que quiere eliminar este registro?</value>
+  </data>
+  <data name="Congrats" xml:space="preserve">
+    <value>Enhorabuena</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Borrar</value>
@@ -131,6 +137,12 @@
   </data>
   <data name="EnName" xml:space="preserve">
     <value>Nombre en Ingles</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>Ha ocurrido un error</value>
   </data>
   <data name="ErrorSaving" xml:space="preserve">
     <value>Error ocurrido mientras se salvaba</value>
@@ -156,6 +168,9 @@
   <data name="Ingredients" xml:space="preserve">
     <value>_Ingredientes</value>
   </data>
+  <data name="IngredientsText" xml:space="preserve">
+    <value>Ingredientes</value>
+  </data>
   <data name="InvalidData" xml:space="preserve">
     <value>Los datos son invalidos. Rellene bien el formulario</value>
   </data>
@@ -174,14 +189,23 @@
   <data name="MenuSaludo" xml:space="preserve">
     <value>_Hola</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
   <data name="Ordenes" xml:space="preserve">
     <value>_Ordenes</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Contraseña</value>
   </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Pagar</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>Precio</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Producto</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Salvar</value>
@@ -191,6 +215,9 @@
   </data>
   <data name="SetLanguage" xml:space="preserve">
     <value>Cambio de idioma</value>
+  </data>
+  <data name="ShoppingSuccess" xml:space="preserve">
+    <value>Gracias por comprar con nosotros. Vuelva pronto.</value>
   </data>
   <data name="Spanish" xml:space="preserve">
     <value>_Español</value>
@@ -206,6 +233,9 @@
   </data>
   <data name="SuccessUpdate" xml:space="preserve">
     <value>Registro actualizado con éxito</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
   </data>
   <data name="UserFailLogin_Log" xml:space="preserve">
     <value>Login fallido</value>

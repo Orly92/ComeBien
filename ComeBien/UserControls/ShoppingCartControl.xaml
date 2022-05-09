@@ -4,14 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ComeBien.UserControls"
+              xmlns:resx="clr-namespace:ComeBien.Resources"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid x:Name="ShoppingCartGrid" Margin="10">
         <StackPanel Orientation="Vertical">
             <UniformGrid x:Name="HeaderGrid" Rows="1" Columns="4" Margin="10">
-                <TextBlock Background="Aqua">Producto</TextBlock>
-                <TextBlock Background="Aqua">Ingredientes</TextBlock>
-                <TextBlock Background="Aqua" >Precio</TextBlock>
+                <TextBlock Background="Aqua" Text="{x:Static resx:Resources.Product }"></TextBlock>
+                <TextBlock Background="Aqua" Text="{x:Static resx:Resources.IngredientsText }"></TextBlock>
+                <TextBlock Background="Aqua" Text="{x:Static resx:Resources.Price }"></TextBlock>
                 <TextBlock Background="Aqua" ></TextBlock>
             </UniformGrid>
 
@@ -36,12 +37,12 @@
 
             <UniformGrid Rows="1" Columns="4" Margin="10">
                 <TextBlock Background="Azure"></TextBlock>
-                <TextBlock Background="Azure">Total:</TextBlock>
+                <TextBlock Background="Azure" Text="{x:Static resx:Resources.Total }">:</TextBlock>
                 <TextBlock Background="Azure" Text="{Binding TotalAmount}"></TextBlock>
                 <TextBlock Background="Azure" ></TextBlock>
             </UniformGrid>
 
-            <Button Margin="10" Content="Pagar" Background="Red" Command="{Binding PayCommand}"
+            <Button Margin="10" Content="{x:Static resx:Resources.Pay }" Background="Red" Command="{Binding PayCommand}"
                     Width="100" Height="50"></Button>
         </StackPanel>
     </Grid>

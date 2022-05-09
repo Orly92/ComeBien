@@ -84,13 +84,23 @@ namespace ComeBien.ViewModel
 
         private void Pay()
         {
-            _orderService.PayOrder();
+            try
+            {
+                _orderService.PayOrder();
 
-            ProductsCollection.Clear();
-            TotalAmount = 0;
+                ProductsCollection.Clear();
+                TotalAmount = 0;
 
-            MessageBox.Show("Ha comprado con éxito. Vuelva pronto",
-                        "Enhorabuena!!!", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(ComeBien.Resources.Resources.ResourceManager.GetString("ShoppingSuccess"),
+                            $"{ComeBien.Resources.Resources.ResourceManager.GetString("Congrats")}!!!", MessageBoxButton.OK,
+                            MessageBoxImage.Information);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(ComeBien.Resources.Resources.ResourceManager.GetString("ErrorMessage"),
+                            $"{ComeBien.Resources.Resources.ResourceManager.GetString("Error")}!!!", MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+            }
         }
 
         public ICommand RemoveProductCommand
