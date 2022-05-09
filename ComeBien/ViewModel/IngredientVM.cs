@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace ComeBien.ViewModel
 {
-    internal class IngredientVM : NotificationClass
+    public class IngredientVM : NotificationClass
     {
         private ICommand _addCommand;
         private ICommand _removeCommand;

@@ -1,4 +1,6 @@
-﻿using ComeBien.DataAccess.Repositories;
+﻿using ComeBien.DataAccess;
+using ComeBien.DataAccess.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -23,9 +25,14 @@ namespace UnitTest.ComeBien.Tests
         {
             int totalProducts = 2;
 
+            using (var dbContext = new ComeBienContext())
+            {
+                totalProducts = await dbContext.Products.CountAsync();
+            }
+
             var products = await _productsRepository.GetAll();
 
-            Assert.AreEqual(products.Count, totalProducts);
+            Assert.AreEqual(totalProducts, products.Count);
         }
     }
 }

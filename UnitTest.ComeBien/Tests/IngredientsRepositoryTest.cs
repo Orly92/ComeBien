@@ -1,4 +1,6 @@
-﻿using ComeBien.DataAccess.Repositories;
+﻿using ComeBien.DataAccess;
+using ComeBien.DataAccess.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -21,11 +23,16 @@ namespace UnitTest.ComeBien.Tests
         [TestMethod]
         public async Task GetAllCountedTest()
         {
-            int totalIngredients = 6;
+            int totalIngredients = 0;
+
+            using (var dbContext = new ComeBienContext())
+            {
+                totalIngredients = await dbContext.Ingredients.CountAsync();
+            }
 
             var ingredients = await _ingredientsRepository.GetAll();
 
-            Assert.AreEqual(ingredients.Count, totalIngredients);
+            Assert.AreEqual(totalIngredients, ingredients.Count);
         }
     }
 }
