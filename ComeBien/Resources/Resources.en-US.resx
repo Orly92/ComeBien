@@ -153,6 +153,9 @@
   <data name="EsName" xml:space="preserve">
     <value>Spanish name</value>
   </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
   <data name="ExportJSON" xml:space="preserve">
     <value>_Export JSON</value>
   </data>
@@ -225,11 +228,17 @@
   <data name="Select" xml:space="preserve">
     <value>Select</value>
   </data>
+  <data name="SelectDate" xml:space="preserve">
+    <value>Select a date</value>
+  </data>
   <data name="SetLanguage" xml:space="preserve">
     <value>change of language</value>
   </data>
   <data name="ShoppingSuccess" xml:space="preserve">
     <value>Thanks for shopping with us. Come back soon.</value>
+  </data>
+  <data name="Since" xml:space="preserve">
+    <value>Since</value>
   </data>
   <data name="Spanish" xml:space="preserve">
     <value>_Spanish</value>
@@ -245,6 +254,9 @@
   </data>
   <data name="SuccessUpdate" xml:space="preserve">
     <value>Record successfully updated</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
   </data>
   <data name="Total" xml:space="preserve">
     <value>Total</value>

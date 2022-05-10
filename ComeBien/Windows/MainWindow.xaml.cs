@@ -167,12 +167,18 @@ namespace ComeBien
 
         private void ExportPDF_Click(object sender, RoutedEventArgs e)
         {
+            ShowExportWindow(ExportOrderEnum.PDF);
+        }
 
+        private static void ShowExportWindow(ExportOrderEnum exportOrderType)
+        {
+            ExportOrderWindow window = new ExportOrderWindow(exportOrderType);
+            window.ShowDialog();
         }
 
         private void ExportJSON_Click(object sender, RoutedEventArgs e)
         {
-
+            ShowExportWindow(ExportOrderEnum.JSON);
         }
     }
 }

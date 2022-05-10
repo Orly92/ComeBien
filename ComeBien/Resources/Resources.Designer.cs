@@ -169,6 +169,15 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exportar.
+        /// </summary>
+        public static string Export {
+            get {
+                return ResourceManager.GetString("Export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Exportar JSON.
         /// </summary>
         public static string ExportJSON {
@@ -385,6 +394,15 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Seleccione un día.
+        /// </summary>
+        public static string SelectDate {
+            get {
+                return ResourceManager.GetString("SelectDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cambio de idioma.
         /// </summary>
         public static string SetLanguage {
@@ -399,6 +417,15 @@ namespace ComeBien.Resources {
         public static string ShoppingSuccess {
             get {
                 return ResourceManager.GetString("ShoppingSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desde.
+        /// </summary>
+        public static string Since {
+            get {
+                return ResourceManager.GetString("Since", resourceCulture);
             }
         }
         
@@ -444,6 +471,15 @@ namespace ComeBien.Resources {
         public static string SuccessUpdate {
             get {
                 return ResourceManager.GetString("SuccessUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hasta.
+        /// </summary>
+        public static string To {
+            get {
+                return ResourceManager.GetString("To", resourceCulture);
             }
         }
         

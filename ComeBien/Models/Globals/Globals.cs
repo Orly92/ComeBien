@@ -31,4 +31,10 @@ namespace ComeBien.Models.Globals
         Ingredients,
         ShoppingCart
     }
+
+    public enum ExportOrderEnum
+    {
+        PDF,
+        JSON
+    }
 }
