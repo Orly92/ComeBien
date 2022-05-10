@@ -70,6 +70,15 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fecha de compra.
+        /// </summary>
+        public static string BuyinDate {
+            get {
+                return ResourceManager.GetString("BuyinDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancelar.
         /// </summary>
         public static string Cancel {
@@ -345,6 +354,15 @@ namespace ComeBien.Resources {
         public static string Ordenes {
             get {
                 return ResourceManager.GetString("Ordenes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Listado de ordenes.
+        /// </summary>
+        public static string OrderPDFTitle {
+            get {
+                return ResourceManager.GetString("OrderPDFTitle", resourceCulture);
             }
         }
         

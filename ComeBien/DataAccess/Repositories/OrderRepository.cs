@@ -115,7 +115,7 @@ namespace ComeBien.DataAccess.Repositories
                         Price = x.ProductPrice,
                         ProductId = x.ProductId,
                     }).ToList()
-                }).ToList();
+                }).OrderBy(x=>x.Id).ToList();
             }
         }
 

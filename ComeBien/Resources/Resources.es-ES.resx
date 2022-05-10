@@ -120,6 +120,9 @@
   <data name="Add" xml:space="preserve">
     <value>Añadir</value>
   </data>
+  <data name="BuyinDate" xml:space="preserve">
+    <value>Fecha de compra</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
@@ -212,6 +215,9 @@
   </data>
   <data name="Ordenes" xml:space="preserve">
     <value>_Ordenes</value>
+  </data>
+  <data name="OrderPDFTitle" xml:space="preserve">
+    <value>Listado de ordenes</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Contraseña</value>
