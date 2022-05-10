@@ -20,6 +20,7 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
@@ -38,18 +39,22 @@
                     </MenuItem.Header>
                 </MenuItem>
                 <MenuItem x:Name="MenuIngredients" Header="{x:Static resx:Resources.Ingredients}" IsEnabled="False" Grid.Column="2" Click="MenuIngredients_Click"/>
-
-                <MenuItem x:Name="MenuHello" HorizontalAlignment="Right" Header="{x:Static resx:Resources.MenuSaludo}" Grid.Column="3">
+                <MenuItem Header="{x:Static resx:Resources.Ordenes}" IsEnabled="False" 
+                          x:Name="MenuOrder" Grid.Column="3">
+                    <MenuItem x:Name="ExportPDF" Header="{x:Static resx:Resources.ExportPDF}" Click="ExportPDF_Click" />
+                    <MenuItem x:Name="ExportJSON" Header="{x:Static resx:Resources.ExportJSON}" Click="ExportJSON_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="MenuHello" HorizontalAlignment="Right" Header="{x:Static resx:Resources.MenuSaludo}" Grid.Column="4">
                     <MenuItem x:Name="MenuLogin" Header="{x:Static resx:Resources.MenuLogin}" Click="MenuItem_LoginClick"/>
                     <MenuItem x:Name="MenuLogout" Header="{x:Static resx:Resources.MenuLogout}" Click="MenuItem_LogoutClick" IsEnabled="False" />
                 </MenuItem>
                 <MenuItem x:Name="MenuLanguage" HorizontalAlignment="Right" Header="_ES"
-                          Grid.Column="4">
+                          Grid.Column="5">
                     <MenuItem x:Name="MenuSpain" Header="{x:Static resx:Resources.Spanish}" Click="MenuSpain_Click"/>
                     <MenuItem x:Name="MenuEnglish" Header="{x:Static resx:Resources.English}" Click="MenuEnglish_Click"/>
                     <MenuItem x:Name="MenuFrance" Header="{x:Static resx:Resources.French}" Click="MenuFrance_Click"/>
                 </MenuItem>
-                <MenuItem x:Name="ShoppingCartMenu" HorizontalAlignment="Right" Grid.Column="5"
+                <MenuItem x:Name="ShoppingCartMenu" HorizontalAlignment="Right" Grid.Column="6"
                           Click="ShoppingCartMenu_Click">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">

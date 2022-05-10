@@ -153,6 +153,12 @@
   <data name="EsName" xml:space="preserve">
     <value>Spanish name</value>
   </data>
+  <data name="ExportJSON" xml:space="preserve">
+    <value>_Export JSON</value>
+  </data>
+  <data name="ExportPDF" xml:space="preserve">
+    <value>_Export PDF </value>
+  </data>
   <data name="French" xml:space="preserve">
     <value>_French</value>
   </data>

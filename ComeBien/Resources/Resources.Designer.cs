@@ -169,6 +169,24 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Exportar JSON.
+        /// </summary>
+        public static string ExportJSON {
+            get {
+                return ResourceManager.GetString("ExportJSON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Exportar PDF .
+        /// </summary>
+        public static string ExportPDF {
+            get {
+                return ResourceManager.GetString("ExportPDF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Francés.
         /// </summary>
         public static string French {

@@ -77,6 +77,7 @@ namespace ComeBien
             MenuLogin.IsEnabled = false;
             MenuLogout.IsEnabled = true;
             MenuIngredients.IsEnabled = true;
+            MenuOrder.IsEnabled = true;
             MenuHello.Header = $"{ConfigService.userName}";
         }
 
@@ -93,6 +94,7 @@ namespace ComeBien
             MenuLogin.IsEnabled = true;
             MenuLogout.IsEnabled = false;
             MenuIngredients.IsEnabled = false;
+            MenuOrder.IsEnabled = false;
             ConfigService.isLogged = false;
             ConfigService.userName = "";
             
@@ -161,6 +163,16 @@ namespace ComeBien
         private void ShoppingCartMenu_Click(object sender, RoutedEventArgs e)
         {
             SetMenuColor(MenuEnum.ShoppingCart);
+        }
+
+        private void ExportPDF_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ExportJSON_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
