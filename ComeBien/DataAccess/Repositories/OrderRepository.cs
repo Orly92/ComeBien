@@ -1,6 +1,7 @@
 ﻿using ComeBien.Models.Core;
 using ComeBien.Models.Database;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,6 +91,8 @@ namespace ComeBien.DataAccess.Repositories
                     query = query.Where(x => x.TimeStamp < dateEnd);
                 }
 
+                Log.Information("Realizando consulta de ordenes");
+
                 var resp = await query.Join(dbContext.OrderProducts,
                                     o => o.Id,
                                     op => op.OrderId,
@@ -102,6 +105,8 @@ namespace ComeBien.DataAccess.Repositories
                                         op.ItemId,
                                         ProductPrice = op.Price
                                     }).ToListAsync();
+
+                Log.Information("Consulta de ordenes todo un éxito");
 
                 return resp.GroupBy(x=>new {x.Id,x.TimeStamp,x.TotalAmount},(f,g)=> new OrderDTO
                 {
@@ -126,10 +131,13 @@ namespace ComeBien.DataAccess.Repositories
             
             using (var dbContext = new ComeBienContext())
             {
+                Log.Information("Realizando consulta de ordenes-ingredientes");
                 var orderIngredients = await dbContext.OrderProductIngredients.
                     Where(x => idsItems.Contains(x.ItemId)).ToListAsync();
 
-                foreach(var order in orders)
+                Log.Information("Consulta de ordenes-ingredientes todo un éxito");
+
+                foreach (var order in orders)
                 {
                     foreach(var product in order.OrderProducts)
                     {

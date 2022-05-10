@@ -172,6 +172,7 @@ namespace ComeBien
 
         private static void ShowExportWindow(ExportOrderEnum exportOrderType)
         {
+            Log.Information($"Usuario abre ventana de exportar {exportOrderType}");
             ExportOrderWindow window = new ExportOrderWindow(exportOrderType);
             window.ShowDialog();
         }

@@ -4,6 +4,7 @@ using ComeBien.Services.FileServices;
 using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Pdf;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,10 @@ namespace ComeBien.Services
 
         public async Task ExportOrders(DateTime dateInitial, DateTime dateEnd)
         {
+            Log.Information($"Salvando documento pdf para las ordenes de {dateInitial} a {dateEnd}");
             IList<OrderDTO> orders = await _orderRepository.GetOrders(dateInitial, dateEnd);
+
+            Log.Information("Ordenes extraidas");
 
             PdfDocument document = new PdfDocument();
             document.Info.Title = ComeBien.Resources.Resources.ResourceManager.GetString("OrderPDFTitle");
@@ -133,6 +137,8 @@ namespace ComeBien.Services
 
             const string filename = "Resources/Files/orders.pdf";
             document.Save(filename);
+
+            Log.Information("Documento pdf salvado");
         }
     }
 }

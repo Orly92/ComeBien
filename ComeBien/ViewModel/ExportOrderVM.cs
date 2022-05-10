@@ -1,6 +1,7 @@
 ﻿using ComeBien.Models.Globals;
 using ComeBien.Services;
 using ComeBien.Services.FileServices;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,15 +64,25 @@ namespace ComeBien.ViewModel
 
         private async Task ExportOrderToFile(Window window)
         {
-            IFileService fileService = _fileFactory.GetFileService(_exportOrderType);
-            await fileService.ExportOrders(DateInitial, DateEnd);
+            try
+            {
+                IFileService fileService = _fileFactory.GetFileService(_exportOrderType);
+                await fileService.ExportOrders(DateInitial, DateEnd);
 
-            MessageBox.Show(ComeBien.Resources.Resources.ResourceManager.GetString("ExportSuccess"),
-                            $"{ComeBien.Resources.Resources.ResourceManager.GetString("Congrats")}", MessageBoxButton.OK,
-                            MessageBoxImage.Information);
+                MessageBox.Show(ComeBien.Resources.Resources.ResourceManager.GetString("ExportSuccess"),
+                                $"{ComeBien.Resources.Resources.ResourceManager.GetString("Congrats")}", MessageBoxButton.OK,
+                                MessageBoxImage.Information);
 
-            if(window != null)
-                window.Close();
+                if (window != null)
+                    window.Close();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, $"Error exportando {_exportOrderType}");
+                MessageBox.Show(ComeBien.Resources.Resources.ResourceManager.GetString("ErrorMessage"),
+                            $"{ComeBien.Resources.Resources.ResourceManager.GetString("Error")}!!!", MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+            }
         }
     }
 }

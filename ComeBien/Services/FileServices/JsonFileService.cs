@@ -3,6 +3,7 @@ using ComeBien.Models.Core;
 using ComeBien.Models.Database;
 using ComeBien.Services.FileServices;
 using Newtonsoft.Json;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,8 +22,15 @@ namespace ComeBien.Services
         }
         public async Task ExportOrders(DateTime dateInitial, DateTime dateEnd)
         {
+            Log.Information($"Salvando documento JSON para las ordenes de {dateInitial} a {dateEnd}");
+
             IList<OrderDTO> orders = await _orderRepository.GetOrdersWithIngredients(dateInitial, dateEnd);
+            
+            Log.Information("Ordenes extraidas");
+            
             await SaveFile("Resources/Files/orders.json", JsonConvert.SerializeObject(orders));
+
+            Log.Information("Documento JSON salvado");
         }
 
         private async Task SaveFile(string path, string content)
