@@ -196,6 +196,15 @@ namespace ComeBien.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exportación con éxito.
+        /// </summary>
+        public static string ExportSuccess {
+            get {
+                return ResourceManager.GetString("ExportSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Francés.
         /// </summary>
         public static string French {

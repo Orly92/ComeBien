@@ -162,6 +162,9 @@
   <data name="ExportPDF" xml:space="preserve">
     <value>_Exporter PDF </value>
   </data>
+  <data name="ExportSuccess" xml:space="preserve">
+    <value>Exportation réussie</value>
+  </data>
   <data name="French" xml:space="preserve">
     <value>_Français</value>
   </data>

@@ -75,10 +75,77 @@ namespace ComeBien.DataAccess.Repositories
 
             return idOrder;
         }
+
+        public async Task<IList<OrderDTO>> GetOrders(DateTime? dateInitial, DateTime? dateEnd)
+        {
+            using (var dbContext = new ComeBienContext())
+            {
+                var query = dbContext.Orders.AsQueryable();
+                if(dateInitial != null)
+                {
+                    query = query.Where(x => x.TimeStamp >= dateInitial);
+                }
+                if (dateEnd != null)
+                {
+                    query = query.Where(x => x.TimeStamp < dateEnd);
+                }
+
+                var resp = await query.Join(dbContext.OrderProducts,
+                                    o => o.Id,
+                                    op => op.OrderId,
+                                    (o, op) => new
+                                    {
+                                        o.TimeStamp,
+                                        o.Id,
+                                        o.TotalAmount,
+                                        op.ProductId,
+                                        op.ItemId,
+                                        ProductPrice = op.Price
+                                    }).ToListAsync();
+
+                return resp.GroupBy(x=>new {x.Id,x.TimeStamp,x.TotalAmount},(f,g)=> new OrderDTO
+                {
+                    Id = f.Id,
+                    TimeStamp = f.TimeStamp,
+                    TotalAmount = f.TotalAmount,
+                    OrderProducts = g.Select(x => new OrderProductsDTO
+                    {
+                        ItemId = x.ItemId,
+                        OrderId = x.Id,
+                        Price = x.ProductPrice,
+                        ProductId = x.ProductId,
+                    }).ToList()
+                }).ToList();
+            }
+        }
+
+        public async Task<IList<OrderDTO>> GetOrdersWithIngredients(DateTime? dateInitial, DateTime? dateEnd)
+        {
+            var orders = await GetOrders(dateInitial, dateEnd);
+            var idsItems = orders.SelectMany(x => x.OrderProducts).Select(x => x.ItemId).ToList();
+            
+            using (var dbContext = new ComeBienContext())
+            {
+                var orderIngredients = await dbContext.OrderProductIngredients.
+                    Where(x => idsItems.Contains(x.ItemId)).ToListAsync();
+
+                foreach(var order in orders)
+                {
+                    foreach(var product in order.OrderProducts)
+                    {
+                        product.Ingredients = orderIngredients.Where(x => x.ItemId == product.ItemId).ToList();
+                    }
+                }
+            }
+
+            return orders;
+        }
     }
 
     public interface IOrderRepository : IBaseRepository<Order>
     {
         Task<int> CreateOrder(ShoppingCart shoppingCart);
+        Task<IList<OrderDTO>> GetOrders(DateTime? dateInitial, DateTime? dateEnd);
+        Task<IList<OrderDTO>> GetOrdersWithIngredients(DateTime? dateInitial, DateTime? dateEnd);
     }
 }
