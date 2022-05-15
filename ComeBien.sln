@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComeBien", "ComeBien\ComeBien.csproj", "{A629BF52-65DC-4507-A14E-400D99A45954}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest.ComeBien", "UnitTest.ComeBien\UnitTest.ComeBien.csproj", "{9FE0B509-C3FE-4F65-9304-3A2741FDF8C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest.ComeBien", "UnitTest.ComeBien\UnitTest.ComeBien.csproj", "{9FE0B509-C3FE-4F65-9304-3A2741FDF8C5}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ComeBienIntaller", "ComeBienIntaller\ComeBienIntaller.vdproj", "{2A30858B-5B8E-4BB6-B41B-5301F952E199}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,8 @@ Global
 		{9FE0B509-C3FE-4F65-9304-3A2741FDF8C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FE0B509-C3FE-4F65-9304-3A2741FDF8C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FE0B509-C3FE-4F65-9304-3A2741FDF8C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A30858B-5B8E-4BB6-B41B-5301F952E199}.Debug|Any CPU.ActiveCfg = Debug
+		{2A30858B-5B8E-4BB6-B41B-5301F952E199}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

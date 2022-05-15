@@ -27,7 +27,7 @@ namespace ComeBien.Services
         public static void Load()
         {
             Log.Information("Cargando datos de configuración");
-            lang = Read("lang");
+            lang = Read("lang") ?? Languages.Spanish;
             userName = Read("userName");
             isLogged = Read("isLogged") == "true";
 

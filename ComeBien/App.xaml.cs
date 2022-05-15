@@ -26,16 +26,17 @@ namespace ComeBien
         {
             base.OnStartup(e);
 
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.File("Logs/log.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
+            Log.Information("Aplicación iniciada");
+
             ConfigService.Load();
 
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.
                 CultureInfo(Languages.LanguagesReference[ConfigService.lang]);
 
-            Log.Logger = new LoggerConfiguration()
-                .WriteTo.File("Logs/log.txt", rollingInterval: RollingInterval.Day)
-                .CreateLogger();
-
-            Log.Information(ComeBien.Resources.Resources.ResourceManager.GetString("Start_Log"));
         }
 
         private void Application_Exit(object sender, ExitEventArgs e)
