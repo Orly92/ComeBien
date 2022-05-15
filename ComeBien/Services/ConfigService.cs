@@ -14,12 +14,14 @@ namespace ComeBien.Services
         public static string lang { get; set; }
         public static bool isLogged { get; set; }
         public static string userName { get; set; }
+        public static WindowDimensions windowDimensions { get; set; }
 
         public static void InitDefaults()
         {
             lang = Languages.Spanish;
             isLogged = false;
             userName = "";
+            windowDimensions = new WindowDimensions();
         }
 
         public static void Load()
@@ -28,6 +30,12 @@ namespace ComeBien.Services
             lang = Read("lang");
             userName = Read("userName");
             isLogged = Read("isLogged") == "true";
+
+            windowDimensions = new WindowDimensions();
+            windowDimensions.Left = double.Parse(Read("left") ?? "0");
+            windowDimensions.Height = double.Parse(Read("height") ?? "600");
+            windowDimensions.Top = double.Parse(Read("top") ?? "0");
+            windowDimensions.Width = double.Parse(Read("width") ?? "800");
 
             Log.Information("Datos cargados correctamente");
         }
@@ -59,6 +67,10 @@ namespace ComeBien.Services
             Write(configFile, "lang", lang);
             Write(configFile, "isLogged", isLogged == true ? "true" : "false");
             Write(configFile, "userName", userName);
+            Write(configFile, "left", windowDimensions.Left.ToString());
+            Write(configFile, "top", windowDimensions.Top.ToString());
+            Write(configFile, "width", windowDimensions.Width.ToString());
+            Write(configFile, "height", windowDimensions.Height.ToString());
 
             configFile.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);

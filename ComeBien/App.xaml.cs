@@ -40,6 +40,7 @@ namespace ComeBien
 
         private void Application_Exit(object sender, ExitEventArgs e)
         {
+            Log.Information("Guardando configuración...");
             ConfigService.Save();
             Log.Information("Aplicación apagandose...");
         }

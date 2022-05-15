@@ -59,6 +59,10 @@ namespace ComeBien
             }
 
             MenuLanguage.Header = $"_{ConfigService.lang}";
+            this.Height = ConfigService.windowDimensions.Height;
+            this.Top = ConfigService.windowDimensions.Top;
+            this.Width = ConfigService.windowDimensions.Width;
+            this.Left = ConfigService.windowDimensions.Left;
         }
 
         private void MenuItem_LoginClick(object sender, RoutedEventArgs e)
@@ -180,6 +184,17 @@ namespace ComeBien
         private void ExportJSON_Click(object sender, RoutedEventArgs e)
         {
             ShowExportWindow(ExportOrderEnum.JSON);
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ConfigService.windowDimensions = new WindowDimensions
+            {
+                Height = this.Height,
+                Left = this.Left,
+                Top = this.Top,
+                Width = this.Width,
+            };
         }
     }
 }

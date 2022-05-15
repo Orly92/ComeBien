@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:ComeBien"
         xmlns:resx="clr-namespace:ComeBien.Resources"
         mc:Ignorable="d"
-        Title="ComeBien" Height="600" Width="800">
+        Title="ComeBien" Height="600" Width="800"
+        Closing="Window_Closing"
+        >
     <Window.Resources>
         <CollectionViewSource x:Key="productsViewSource"/>
     </Window.Resources>
