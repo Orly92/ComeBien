@@ -1,4 +1,5 @@
-﻿using ComeBien.DataAccess.Repositories;
+﻿using ComeBien.DataAccess;
+using ComeBien.DataAccess.Repositories;
 using ComeBien.Models.Globals;
 using ComeBien.Services;
 using ComeBien.Windows;
@@ -37,6 +38,8 @@ namespace ComeBien
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.
                 CultureInfo(Languages.LanguagesReference[ConfigService.lang]);
 
+            IInitializeDB initializeDB = new InitializeDB();
+            initializeDB.Initialize();
         }
 
         private void Application_Exit(object sender, ExitEventArgs e)
