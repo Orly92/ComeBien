@@ -10,16 +10,20 @@ namespace ComeBien.DataAccess
 {
     public class ComeBienContext : DbContext
     {
-        public ComeBienContext() : base() { }
+        public ComeBienContext() : base() {
+            Database.EnsureCreated();
+        }
 
         public ComeBienContext(DbContextOptions<ComeBienContext> options)
-            : base(options) { }
+            : base(options) { 
+            Database.EnsureCreated();
+        }
 
         protected override void OnConfiguring(
             DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-                "Server=localhost;Database=comeBien;User Id=comeBien;Password=comeBien*;");
+            optionsBuilder.UseSqlite(
+                "Data Source=comeBien;");
 
         }
 
