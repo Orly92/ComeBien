@@ -38,8 +38,8 @@ namespace ComeBien
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.
                 CultureInfo(Languages.LanguagesReference[ConfigService.lang]);
 
-            IInitializeDB initializeDB = new InitializeDB();
-            initializeDB.Initialize();
+            //IInitializeDB initializeDB = new InitializeDB();
+            //initializeDB.Initialize();
         }
 
         private void Application_Exit(object sender, ExitEventArgs e)

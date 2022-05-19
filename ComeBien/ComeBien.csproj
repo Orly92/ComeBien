@@ -5,6 +5,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Resources\Images\Restaurant.ico</ApplicationIcon>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,7 +26,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.0">
+		  <IncludeAssets>all</IncludeAssets>
+		  <PrivateAssets>none</PrivateAssets>
+		  <ExcludeAssets>none</ExcludeAssets>
+	  </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -37,6 +42,11 @@
     <PackageReference Include="Serilog" Version="2.11.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+	  <PackageReference Include="System.Data.SQLite" Version="1.0.115.5">
+		  <IncludeAssets>all</IncludeAssets>
+		  <PrivateAssets>none</PrivateAssets>
+		  <ExcludeAssets>none</ExcludeAssets>
+	  </PackageReference>
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 
@@ -91,4 +101,20 @@
     <Folder Include="Resources\Files\" />
   </ItemGroup>
 
+	<Target Name="IncludeNativeBinariesAsOutput" BeforeTargets="GetCopyToOutputDirectoryItems">
+		<ItemGroup>
+			<Content Include="$(OutputPath)\runtimes\win-x64\native\e_sqlite3.dll">
+				<Link>x64\e_sqlite3.dll</Link>
+				<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			</Content>
+			<Content Include="$(OutputPath)\runtimes\win-x86\native\e_sqlite3.dll">
+				<Link>x86\e_sqlite3.dll</Link>
+				<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			</Content>
+		</ItemGroup>
+
+		<AssignTargetPath Files="@(Content)" RootFolder="$(MSBuildProjectDirectory)">
+			<Output TaskParameter="AssignedFiles" ItemName="ContentWithTargetPath" />
+		</AssignTargetPath>
+	</Target>
 </Project>
