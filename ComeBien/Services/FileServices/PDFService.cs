@@ -48,6 +48,7 @@ namespace ComeBien.Services
                 tfList.Add(tf);
             }
 
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
             XStringFormat format = new XStringFormat();
             format.LineAlignment = XLineAlignment.Near;
