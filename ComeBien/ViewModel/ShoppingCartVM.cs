@@ -85,10 +85,10 @@ namespace ComeBien.ViewModel
         private void SetPayCommand()
         {
             bool canExecute = ShoppingCartService.GetInstance().ShoppingCart.Products.Count > 0;
-            _payCommand = new RelayCommand(param => Pay(), canExecute);
+            _payCommand = new RelayCommand(async param => await Pay(), canExecute);
         }
 
-        private void Pay()
+        private async Task Pay()
         {
             try
             {
@@ -100,7 +100,7 @@ namespace ComeBien.ViewModel
                     return;
                 }
                 Log.Information("Intento de pagar la orden");
-                _orderService.PayOrder();
+                int idOrder = await _orderService.PayOrder();
 
                 Log.Information("Orden pagada correctamente");
 
@@ -109,7 +109,7 @@ namespace ComeBien.ViewModel
 
                 Log.Information("Información del carrito View Model ha sido limpiada");
 
-                MessageBox.Show(ComeBien.Resources.Resources.ResourceManager.GetString("ShoppingSuccess"),
+                MessageBox.Show($"Id:{idOrder}. {ComeBien.Resources.Resources.ResourceManager.GetString("ShoppingSuccess")}",
                             $"{ComeBien.Resources.Resources.ResourceManager.GetString("Congrats")}!!!", MessageBoxButton.OK,
                             MessageBoxImage.Information);
             }

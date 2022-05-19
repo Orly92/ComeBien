@@ -22,7 +22,7 @@ namespace ComeBien.Services
             _orderRepository = orderRepository;
         }
 
-        public async Task PayOrder()
+        public async Task<int> PayOrder()
         {
             int idOrder = await _orderRepository.CreateOrder(ShoppingCartService.GetInstance().ShoppingCart);
 
@@ -31,12 +31,14 @@ namespace ComeBien.Services
             ShoppingCartService.GetInstance().Reset();
 
             Log.Information("Carrito en servicio reseteado");
+
+            return idOrder;
         }
 
     }
 
     public interface IOrderService
     {
-        Task PayOrder();
+        Task<int> PayOrder();
     }
 }
